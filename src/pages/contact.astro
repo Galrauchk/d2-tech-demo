@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Nexus AI",
+  "description": "Contactez Nexus AI pour votre projet IA",
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "Nexus AI",
+    "telephone": "+33184000000",
+    "email": "hello@nexus-ai.fr",
+    "address": [
+      { "@type": "PostalAddress", "addressLocality": "Paris", "postalCode": "75008", "addressCountry": "FR" },
+      { "@type": "PostalAddress", "addressLocality": "Montpellier", "postalCode": "34000", "addressCountry": "FR" }
+    ]
+  }
+};
+---
+
+<Layout
+  title="Contact Nexus AI — Démarrez Votre Projet IA | Paris & Montpellier"
+  description="Contactez Nexus AI pour votre projet d'automation IA, SEO IA ou chatbot. Réponse en moins de 2h. Paris : 01 84 00 00 00 · Montpellier : 04 67 00 00 00."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content text-center">
+      <div class="badge badge-cyan mb-4">Parlons-nous</div>
+      <h1 style="margin-bottom:1rem;">Démarrons votre<br/><span class="gradient-text">projet IA ensemble</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:500px; margin:0 auto;">Réponse garantie en moins de 2h en jours ouvrés. Premier appel découverte gratuit et sans engagement.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-2" style="gap:4rem; align-items:start;">
+        <!-- Form -->
+        <div class="fade-in">
+          <h2 style="margin-bottom:2rem;">Envoyez-nous <span class="gradient-text">un message</span></h2>
+          <form action="#" method="POST">
+            <div class="grid-2" style="gap:1rem;">
+              <div class="form-group">
+                <label class="form-label">Prénom *</label>
+                <input type="text" name="firstname" class="form-input" placeholder="Jean" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Nom *</label>
+                <input type="text" name="lastname" class="form-input" placeholder="Dupont" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email professionnel *</label>
+              <input type="email" name="email" class="form-input" placeholder="jean.dupont@entreprise.fr" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Téléphone</label>
+              <input type="tel" name="phone" class="form-input" placeholder="06 00 00 00 00" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Entreprise</label>
+              <input type="text" name="company" class="form-input" placeholder="Votre entreprise" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Votre besoin *</label>
+              <select name="service" class="form-input" required>
+                <option value="">Choisissez un service</option>
+                <option value="automation">Automation IA</option>
+                <option value="seo">SEO Intelligence IA</option>
+                <option value="web">Développement Web</option>
+                <option value="chatbot">Chatbot IA</option>
+                <option value="analytics">Analytics IA</option>
+                <option value="formation">Formation IA</option>
+                <option value="autre">Autre / Plusieurs services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Décrivez votre projet</label>
+              <textarea name="message" class="form-input" placeholder="Décrivez votre situation actuelle et vos objectifs..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Budget estimé</label>
+              <select name="budget" class="form-input">
+                <option value="">Non défini</option>
+                <option value="<1k">Moins de 1 000€/mois</option>
+                <option value="1-3k">1 000 – 3 000€/mois</option>
+                <option value="3-10k">3 000 – 10 000€/mois</option>
+                <option value=">10k">Plus de 10 000€/mois</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-full" style="justify-content:center; font-size:1rem;">
+              Envoyer ma demande →
+            </button>
+            <p style="margin-top:0.75rem; font-size:0.8125rem; color:var(--text-muted); text-align:center;">
+              En soumettant ce formulaire, vous acceptez notre <a href="/mentions-legales" style="color:var(--cyan);">politique de confidentialité</a>.
+            </p>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="fade-in">
+          <h2 style="margin-bottom:2rem;">Nos <span class="gradient-text">coordonnées</span></h2>
+
+          <!-- Paris -->
+          <div class="card" style="margin-bottom:1.5rem;">
+            <div class="badge badge-cyan mb-3" style="font-size:0.75rem;">📍 Paris</div>
+            <div style="display:flex; flex-direction:column; gap:0.625rem; font-size:0.9375rem; color:var(--text-muted);">
+              <div>Avenue des Champs-Élysées<br/>75008 Paris</div>
+              <a href="tel:+33184000000" style="color:var(--cyan); text-decoration:none;">01 84 00 00 00</a>
+              <a href="mailto:paris@nexus-ai.fr" style="color:var(--cyan); text-decoration:none;">paris@nexus-ai.fr</a>
+              <div style="font-size:0.8125rem;">Lundi – Vendredi : 9h – 18h</div>
+            </div>
+          </div>
+
+          <!-- Montpellier -->
+          <div class="card" style="margin-bottom:2rem;">
+            <div class="badge badge-violet mb-3" style="font-size:0.75rem;">📍 Montpellier · Siège</div>
+            <div style="display:flex; flex-direction:column; gap:0.625rem; font-size:0.9375rem; color:var(--text-muted);">
+              <div>Parc Euromédecine<br/>34000 Montpellier</div>
+              <a href="tel:+33467000000" style="color:var(--cyan); text-decoration:none;">04 67 00 00 00</a>
+              <a href="mailto:hello@nexus-ai.fr" style="color:var(--cyan); text-decoration:none;">hello@nexus-ai.fr</a>
+              <div style="font-size:0.8125rem;">Lundi – Vendredi : 9h – 18h</div>
+            </div>
+          </div>
+
+          <!-- Response time promise -->
+          <div class="card" style="background:rgba(0,229,255,0.04); border-color:rgba(0,229,255,0.2);">
+            <div class="flex" style="align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
+              <div class="status-dot"></div>
+              <span style="font-weight:600;">Temps de réponse garanti</span>
+            </div>
+            {[
+              { t: 'Email & formulaire', v: '< 2h en jours ouvrés' },
+              { t: 'Premier appel découverte', v: 'Sous 24h' },
+              { t: 'Devis personnalisé', v: 'Sous 48h' }
+            ].map(r => (
+              <div style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border); font-size:0.875rem;">
+                <span style="color:var(--text-muted);">{r.t}</span>
+                <span style="color:var(--cyan); font-weight:600;">{r.v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

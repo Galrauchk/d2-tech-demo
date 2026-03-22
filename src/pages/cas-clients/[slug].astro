@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  const cases = [
+    {
+      slug: 'retailpro-340-roi',
+      company: 'RetailPro',
+      sector: 'Distribution retail',
+      service: 'Automation IA + Analytics',
+      gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)',
+      title: "RetailPro — +340% ROI grâce à l'Automation IA",
+      description: "Comment RetailPro a multiplié son ROI par 4.4 en automatisant ses processus avec Nexus AI. Étude de cas complète avec données et résultats mesurables.",
+      challenge: "RetailPro gérait 500+ commandes/jour manuellement. Les équipes passaient 30h/semaine à saisir des données, générer des rapports et envoyer des relances. Les erreurs humaines coûtaient cher et la croissance était freinée par ces goulots d'étranglement opérationnels.",
+      solution: "Nexus AI a déployé 8 automatisations interconnectées : génération automatique de rapports commerciaux, synchronisation CRM/ERP en temps réel, relances clients segmentées par IA, gestion des retours automatisée, et un dashboard analytics prédictif pour anticiper les besoins en stock.",
+      results: [
+        { metric: '+340%', label: 'ROI sur 12 mois' },
+        { metric: '25h', label: 'Économisées/semaine' },
+        { metric: '95%', label: "Réduction des erreurs" },
+        { metric: '€180k', label: 'Économies annuelles' }
+      ],
+      quote: "Nexus AI a transformé notre façon de travailler. Nos équipes se concentrent maintenant sur la relation client et le développement commercial, l'IA gère le reste.",
+      author: 'Sophie M., Directrice Marketing RetailPro'
+    },
+    {
+      slug: 'innotech-automation',
+      company: 'InnoTech',
+      sector: 'Technologie B2B',
+      service: 'Automation IA',
+      gradient: 'linear-gradient(135deg, #7c3aed, #0066ff)',
+      title: "InnoTech — 25h économisées par semaine grâce à l'IA",
+      description: "InnoTech a automatisé son pipeline commercial et ses opérations avec Nexus AI. ROI x4 en 6 mois, 25h économisées par semaine, pipeline commercial x3.",
+      challenge: "Startup en croissance rapide, InnoTech était confrontée à un paradoxe : plus elle grandissait, plus les tâches administratives prenaient du temps, freinant la croissance. Le CEO et les commerciaux passaient 40% de leur temps sur des tâches à faible valeur ajoutée.",
+      solution: "Automation du pipeline commercial (scoring IA, relances automatiques, suivi CRM), génération automatique des propositions commerciales, reporting hebdomadaire automatisé, intégration Slack pour alertes temps réel.",
+      results: [
+        { metric: 'x4', label: 'ROI en 6 mois' },
+        { metric: '25h', label: 'Économisées/semaine' },
+        { metric: 'x3', label: 'Leads qualifiés' },
+        { metric: '+45%', label: 'Taux de conversion' }
+      ],
+      quote: "En 3 mois, nos revenus ont augmenté de 60% sans embaucher. L'automation IA nous a donné l'effet de levier dont nous avions besoin pour scaler.",
+      author: 'Thomas R., CEO InnoTech'
+    },
+    {
+      slug: 'ecomboost-seo',
+      company: 'EcomBoost',
+      sector: 'E-commerce mode',
+      service: 'SEO IA',
+      gradient: 'linear-gradient(135deg, #00e5ff, #7c3aed)',
+      title: "EcomBoost — +210% de trafic organique grâce au SEO IA",
+      description: "EcomBoost a réduit sa dépendance aux publicités payantes de 55% grâce au SEO IA de Nexus AI. +210% de trafic organique en 4 mois. Coût d'acquisition divisé par 2.",
+      challenge: "EcomBoost dépendait à 80% des publicités Facebook et Google pour son acquisition. Avec la hausse des CPM et la fin des cookies tiers, le CAC avait augmenté de 45% en 18 mois. La marge opérationnelle était sous pression.",
+      solution: "Stratégie SEO IA complète : audit technique, optimisation des 2000 fiches produits avec contenu IA, création de 60 articles de blog expertés par mois, netlinking qualitatif, SEO local pour les showrooms.",
+      results: [
+        { metric: '+210%', label: 'Trafic organique' },
+        { metric: '-55%', label: 'Dépendance pub payante' },
+        { metric: '-48%', label: "CAC (coût d'acquisition)" },
+        { metric: 'Top 3', label: 'Sur 150 mots-clés cibles' }
+      ],
+      quote: "Le SEO IA de Nexus AI est une révolution. Notre trafic organique a explosé en 4 mois. Nous avons pu couper 40% de notre budget pub et maintenir nos ventes.",
+      author: 'Laura K., Head of Growth EcomBoost'
+    },
+    {
+      slug: 'conseilpme-formation',
+      company: 'ConseilPME',
+      sector: 'Conseil & Services',
+      service: 'Formation IA',
+      gradient: 'linear-gradient(135deg, #0066ff, #7c3aed)',
+      title: "ConseilPME — +60% de productivité après Formation IA",
+      description: "14 consultants de ConseilPME formés à l'IA en 2 jours. Gain de productivité de 60%, NPS formation 92/100. Retour sur investissement en 3 semaines.",
+      challenge: "ConseilPME voyait l'IA comme une menace plutôt qu'une opportunité. Les consultants avaient entendu parler de ChatGPT mais ne savaient pas comment l'utiliser de façon professionnelle et sécurisée dans leur contexte métier.",
+      solution: "Formation IA sur mesure de 2 jours pour 14 consultants : fondamentaux IA, prompting expert adapté au conseil, automatisation des livrables (rapports, propositions, analyses), IA générative pour les présentations clients.",
+      results: [
+        { metric: '+60%', label: 'Productivité moyenne' },
+        { metric: '3 sem.', label: 'ROI formation atteint' },
+        { metric: '92/100', label: 'NPS formation' },
+        { metric: '4.5', label: 'Outils IA adoptés/consultant' }
+      ],
+      quote: "Formation excellente ! Nos consultants utilisent maintenant l'IA quotidiennement. La productivité a bondi de 60% et la qualité de nos livrables a nettement progressé.",
+      author: 'Marc D., Directeur Général ConseilPME'
+    },
+    {
+      slug: 'luxestore-chatbot',
+      company: 'LuxeStore',
+      sector: 'Retail luxe',
+      service: 'Chatbot IA',
+      gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)',
+      title: "LuxeStore — 78% des questions clients résolues automatiquement",
+      description: "LuxeStore a déployé un chatbot IA sur site et WhatsApp. 78% de résolution automatique, satisfaction 4.8/5, coûts support -60%. Étude de cas complète.",
+      challenge: "LuxeStore recevait 300+ demandes client par jour sur site, email et WhatsApp. L'équipe service client de 4 personnes était saturée. Temps de réponse moyen : 4h. Satisfaction en baisse. Impossibilité de recruter sans alourdir les coûts.",
+      solution: "Déploiement d'un chatbot IA sur le site et WhatsApp Business, alimenté par une base de connaissances produits, politiques de retour, FAQ. Escalade intelligente vers agents humains pour les cas complexes avec transfert du contexte complet.",
+      results: [
+        { metric: '78%', label: 'Résolution automatique' },
+        { metric: '4.8/5', label: 'Score satisfaction' },
+        { metric: '-60%', label: 'Coûts support' },
+        { metric: '< 30s', label: 'Temps de réponse moyen' }
+      ],
+      quote: "Le chatbot IA de Nexus AI a transformé notre service client. Nos agents se concentrent sur les clients VIP et les cas complexes. La satisfaction a explosé.",
+      author: 'Isabelle F., COO LuxeStore'
+    }
+  ];
+
+  return cases.map(c => ({
+    params: { slug: c.slug },
+    props: { cas: c }
+  }));
+}
+
+const { cas } = Astro.props;
+
+const caseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": cas.title,
+  "description": cas.description,
+  "author": { "@type": "Organization", "name": "Nexus AI" },
+  "publisher": { "@type": "Organization", "name": "Nexus AI" }
+};
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Cas clients", "item": "https://d2-tech-demo.netlify.app/cas-clients" },
+    { "@type": "ListItem", "position": 3, "name": cas.company }
+  ]
+};
+---
+
+<Layout
+  title={`${cas.title} | Nexus AI`}
+  description={cas.description}
+  schema={[caseSchema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/cas-clients">Cas clients</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">{cas.company}</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">{cas.sector}</div>
+      <h1 style="font-size:clamp(1.75rem,4vw,3rem); max-width:700px; margin-bottom:1.5rem;">{cas.title}</h1>
+      <div class="badge badge-violet">{cas.service}</div>
+    </div>
+  </div>
+
+  <!-- Hero results -->
+  <section class="section-sm" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {cas.results.map(r => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{r.metric}</div>
+            <div style="color:var(--text-muted); margin-top:0.5rem;">{r.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case content -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container" style="max-width:800px;">
+      <!-- Challenge -->
+      <div class="fade-in" style="margin-bottom:3rem;">
+        <div class="badge badge-violet mb-3">Le défi</div>
+        <h2 style="font-size:1.75rem; margin-bottom:1rem;">La situation <span class="gradient-text">initiale</span></h2>
+        <p style="color:var(--text-muted); font-size:1.0625rem; line-height:1.8;">{cas.challenge}</p>
+      </div>
+
+      <!-- Solution -->
+      <div class="fade-in" style="margin-bottom:3rem;">
+        <div class="badge badge-cyan mb-3">La solution</div>
+        <h2 style="font-size:1.75rem; margin-bottom:1rem;">Notre <span class="gradient-text">approche</span></h2>
+        <p style="color:var(--text-muted); font-size:1.0625rem; line-height:1.8;">{cas.solution}</p>
+      </div>
+
+      <!-- Quote -->
+      <div class="card fade-in" style="background:rgba(0,229,255,0.04); border-color:rgba(0,229,255,0.2); margin-bottom:3rem;">
+        <div style="font-size:2rem; color:var(--cyan); margin-bottom:0.5rem;">"</div>
+        <p style="font-size:1.125rem; font-style:italic; line-height:1.7; margin-bottom:1.25rem;">{cas.quote}</p>
+        <div style="font-weight:600; font-size:0.875rem; color:var(--cyan);">— {cas.author}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--surface-dark); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Obtenez les mêmes résultats<br/><span class="gradient-text">pour votre business</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Discutons de votre projet. Nos experts définissent avec vous la roadmap IA pour atteindre vos objectifs.</p>
+      <a href="/contact" class="btn btn-primary">Démarrer mon projet →</a>
+      <p style="margin-top:1rem; font-size:0.875rem; color:var(--text-muted);">✓ Audit gratuit · ✓ Sans engagement · ✓ Résultats garantis</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

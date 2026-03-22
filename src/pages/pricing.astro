@@ -1,0 +1,251 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Puis-je changer de plan en cours d'abonnement ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui, vous pouvez upgrader ou downgrader votre plan à tout moment. Le changement prend effet à la prochaine date de facturation." }
+    },
+    {
+      "@type": "Question",
+      "name": "Y a-t-il un engagement minimum ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Non, tous nos plans sont sans engagement. Vous pouvez annuler à tout moment. L'abonnement annuel bénéficie de -20% mais n'est pas obligatoire." }
+    }
+  ]
+};
+
+const plans = [
+  {
+    name: 'Starter',
+    priceM: 299,
+    priceA: 239,
+    desc: 'Pour démarrer votre transformation IA',
+    color: 'var(--cyan)',
+    features: [
+      '3 automatisations IA',
+      'SEO IA basique (10 pages/mois)',
+      'Chatbot 500 conversations/mois',
+      'Analytics standard',
+      'Rapport mensuel automatisé',
+      'Support email 5j/7',
+      '1 utilisateur'
+    ],
+    notIncluded: ['Formation équipe', 'Intégrations CRM/ERP', 'LLM privé'],
+    cta: 'Démarrer',
+    href: '/contact'
+  },
+  {
+    name: 'Growth',
+    priceM: 799,
+    priceA: 639,
+    desc: "Pour accélérer votre croissance avec l'IA",
+    color: '#a78bfa',
+    features: [
+      'Automatisations illimitées',
+      'SEO IA avancé + contenu illimité',
+      'Chatbot conversations illimitées',
+      'Analytics prédictifs',
+      'Rapports personnalisés',
+      'Formation équipe incluse (2 jours)',
+      'Support Slack dédié 7j/7',
+      'Intégrations CRM/ERP',
+      '5 utilisateurs'
+    ],
+    notIncluded: ['LLM privé hébergé', 'SLA 99.99%'],
+    cta: 'Choisir Growth',
+    href: '/contact',
+    featured: true
+  },
+  {
+    name: 'Enterprise',
+    priceM: null,
+    priceA: null,
+    desc: 'Solution IA sur mesure pour grandes structures',
+    color: '#60a5fa',
+    features: [
+      'Architecture IA entièrement custom',
+      'LLM privé hébergé en France',
+      'Data pipeline sur mesure',
+      'SLA 99.99% garanti',
+      'CSM (Customer Success Manager) dédié',
+      'Audit IA trimestriel',
+      'Formation illimitée',
+      'Conformité RGPD avancée + DPO',
+      'Utilisateurs illimités'
+    ],
+    notIncluded: [],
+    cta: 'Nous contacter',
+    href: '/contact'
+  }
+];
+
+const comparisonFeatures = [
+  { label: 'Automatisations IA', starter: '3', growth: 'Illimitées', enterprise: 'Illimitées + custom' },
+  { label: 'SEO IA pages/mois', starter: '10', growth: 'Illimité', enterprise: 'Illimité + stratégie' },
+  { label: 'Chatbot conversations', starter: '500/mois', growth: 'Illimitées', enterprise: 'Illimitées' },
+  { label: 'Analytics', starter: 'Standard', growth: 'Prédictifs', enterprise: 'Custom + BI' },
+  { label: 'Utilisateurs', starter: '1', growth: '5', enterprise: 'Illimités' },
+  { label: 'Formation', starter: '—', growth: '2 jours inclus', enterprise: 'Illimitée' },
+  { label: 'Support', starter: 'Email 5j/7', growth: 'Slack 7j/7', enterprise: 'CSM dédié' },
+  { label: 'SLA uptime', starter: '99.5%', growth: '99.9%', enterprise: '99.99%' },
+  { label: 'Intégrations CRM', starter: '—', growth: '✓', enterprise: '✓ + custom' },
+  { label: 'LLM privé hébergé', starter: '—', growth: '—', enterprise: '✓' },
+];
+---
+
+<Layout
+  title="Tarifs Nexus AI — Plans & Abonnements IA | Dès 299€/mois"
+  description="Découvrez les plans Nexus AI : Starter 299€/mois, Growth 799€/mois, Enterprise sur devis. -20% avec l'abonnement annuel. Sans engagement. Résultats garantis."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content text-center">
+      <div class="badge badge-cyan mb-4">Tarifs transparents</div>
+      <h1 style="margin-bottom:1rem;">Des plans pour <span class="gradient-text">chaque ambition</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:540px; margin:0 auto 2rem;">Sans engagement, sans surprise. Annulez quand vous voulez. Résultats garantis sous 30 jours.</p>
+
+      <!-- Toggle -->
+      <div class="pricing-toggle">
+        <span style="color:var(--text-muted);">Mensuel</span>
+        <label style="cursor:pointer; display:flex; align-items:center;">
+          <input type="checkbox" id="billing-toggle" />
+          <div class="toggle-switch"></div>
+        </label>
+        <span style="color:var(--text-muted);">Annuel</span>
+        <span class="badge badge-cyan" style="font-size:0.75rem; padding:0.25rem 0.625rem;">-20%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plans -->
+  <section class="section" style="background:var(--surface-dark); padding-top:2rem;">
+    <div class="container">
+      <div class="grid-3" style="align-items:start;">
+        {plans.map(p => (
+          <div class={`card tilt-card fade-in ${p.featured ? 'card-featured' : ''}`} style={p.featured ? 'border:none;' : ''}>
+            {p.featured && <div class="badge badge-cyan mb-3" style="font-size:0.75rem;">⭐ RECOMMANDÉ</div>}
+            <h3 style="margin-bottom:0.25rem;">{p.name}</h3>
+            <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:1.5rem;">{p.desc}</p>
+
+            <div class="price-monthly" style={`font-size:2.75rem; font-weight:900; color:${p.color}; margin-bottom:0.25rem;`}>
+              {p.priceM ? `${p.priceM}€` : 'Sur devis'}
+              {p.priceM && <span style="font-size:1rem; font-weight:400; color:var(--text-muted);">/mois</span>}
+            </div>
+            <div class="price-annual" style={`font-size:2.75rem; font-weight:900; color:${p.color}; margin-bottom:0.25rem; display:none;`}>
+              {p.priceA ? `${p.priceA}€` : 'Sur devis'}
+              {p.priceA && <span style="font-size:1rem; font-weight:400; color:var(--text-muted);">/mois</span>}
+            </div>
+            {p.priceA && <p style="color:var(--text-muted); font-size:0.8125rem; margin-bottom:1.5rem; display:none;" class="annual-note">Facturé {p.priceA * 12}€/an</p>}
+
+            <a href={p.href} class={`btn w-full ${p.featured ? 'btn-primary' : 'btn-outline'}`} style="justify-content:center; margin-bottom:1.5rem;">{p.cta}</a>
+
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;">
+              {p.features.map(f => (
+                <li style="display:flex; align-items:center; gap:0.625rem; font-size:0.9375rem; color:var(--text-muted);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {f}
+                </li>
+              ))}
+              {p.notIncluded.map(f => (
+                <li style="display:flex; align-items:center; gap:0.625rem; font-size:0.9375rem; color:var(--text-muted); opacity:0.4;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Comparatif <span class="gradient-text">détaillé</span></h2>
+      </div>
+      <div class="fade-in" style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.9375rem;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border-cyan);">
+              <th style="text-align:left; padding:1rem; color:var(--text-muted); font-weight:500;">Fonctionnalité</th>
+              <th style="text-align:center; padding:1rem; color:var(--cyan);">Starter</th>
+              <th style="text-align:center; padding:1rem; color:#a78bfa;">Growth</th>
+              <th style="text-align:center; padding:1rem; color:#60a5fa;">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonFeatures.map((f, i) => (
+              <tr style={`border-bottom:1px solid var(--border); ${i % 2 === 0 ? 'background:rgba(255,255,255,0.02);' : ''}`}>
+                <td style="padding:0.875rem 1rem; color:var(--text-muted);">{f.label}</td>
+                <td style="padding:0.875rem 1rem; text-align:center; color:var(--text);">{f.starter}</td>
+                <td style="padding:0.875rem 1rem; text-align:center; color:var(--text);">{f.growth}</td>
+                <td style="padding:0.875rem 1rem; text-align:center; color:var(--text);">{f.enterprise}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ pricing -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container" style="max-width:800px;">
+      <div class="text-center mb-6 fade-in">
+        <h2>Questions sur <span class="gradient-text">nos tarifs</span></h2>
+      </div>
+      {[
+        { q: "Puis-je changer de plan en cours d'abonnement ?", a: "Oui, vous pouvez upgrader ou downgrader votre plan à tout moment. L'upgrade est immédiat (prorata calculé). Le downgrade prend effet à la prochaine date de facturation." },
+        { q: "Y a-t-il un engagement minimum ?", a: "Non, tous nos plans mensuels sont sans engagement. L'abonnement annuel offre -20% et est payé en une fois, mais reste résiliable avec remboursement au prorata." },
+        { q: "Que se passe-t-il après les 30 jours d'essai ?", a: "À la fin de la période d'essai, vous choisissez votre plan et renseignez vos informations de paiement. Aucun prélèvement automatique sans votre accord explicite." },
+        { q: "Les prix incluent-ils la TVA ?", a: "Les prix affichés sont HT. La TVA française à 20% s'applique pour les clients basés en France. Les entreprises européennes avec numéro TVA intracommunautaire bénéficient de la reverse charge." },
+        { q: "Y a-t-il des frais d'installation ou d'onboarding ?", a: "Non, l'onboarding est entièrement gratuit et inclus dans tous nos plans. Nos équipes vous accompagnent pour la configuration et la prise en main." }
+      ].map(item => (
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            {item.q}
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">{item.a}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Pas sûr du plan ?<br/><span class="gradient-text">Parlons-en</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Notre équipe vous aide à choisir la solution adaptée à vos besoins et votre budget. Appel de 20 minutes, gratuit et sans engagement.</p>
+      <a href="/contact" class="btn btn-primary">Parler à un expert →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<script>
+  const toggle = document.getElementById('billing-toggle') as HTMLInputElement | null;
+  const monthly = document.querySelectorAll('.price-monthly');
+  const annual = document.querySelectorAll('.price-annual');
+  const annualNotes = document.querySelectorAll('.annual-note');
+  if (toggle) {
+    toggle.addEventListener('change', () => {
+      const isAnnual = toggle.checked;
+      monthly.forEach(el => (el as HTMLElement).style.display = isAnnual ? 'none' : 'block');
+      annual.forEach(el => (el as HTMLElement).style.display = isAnnual ? 'block' : 'none');
+      annualNotes.forEach(el => (el as HTMLElement).style.display = isAnnual ? 'block' : 'none');
+    });
+  }
+</script>

@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Automation IA Toulouse — Automatisez vos Processus en Occitanie | Nexus AI"
+  description="Expert automation IA à Toulouse et en Occitanie. Automatisation pour secteurs aéronautique, services, tech. Audit offert. ROI garanti. Intervention sur site Toulouse."
+>
+  <Header slot="header" />
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a><span class="breadcrumb-sep">/</span>
+        <a href="/villes/toulouse">Toulouse</a><span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Automation IA</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Toulouse · Automation IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">Automation IA Toulouse<br/><span class="gradient-text">Libérez vos équipes</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">Toulouse, ville de l'innovation. Nos experts IA automatisent vos processus pour que vos équipes se concentrent sur ce qui compte vraiment. Secteurs aéro, services, tech.</p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Audit gratuit Toulouse →</a>
+        <a href="/services/automation-ia" class="btn btn-outline">Nos solutions</a>
+      </div>
+    </div>
+  </div>
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '20h', l: 'Gagnées/semaine', d: 'En moyenne par équipe' },
+          { n: 'x4', l: 'ROI moyen', d: 'Sur 12 mois' },
+          { n: '2-4 sem.', l: 'Déploiement', d: 'Du brief au go-live' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Audit automation<br/><span class="gradient-text">offert à Toulouse</span></h2>
+      <a href="/contact" class="btn btn-primary">Réserver mon audit →</a>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Layout>

@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Analytics IA Paris",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "areaServed": { "@type": "City", "name": "Paris" }
+};
+---
+
+<Layout
+  title="Analytics IA Paris — Tableaux de Bord Prédictifs Île-de-France | Nexus AI"
+  description="Solutions Analytics IA à Paris. Dashboards temps réel, forecasting, détection d'anomalies. Décidez mieux pour votre business parisien. Démo gratuite."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/villes/paris">Paris</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Analytics IA</span>
+      </nav>
+      <div class="badge badge-violet mb-3">📍 Paris · Analytics IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Analytics IA Paris<br/>
+        <span class="gradient-text">Pilotez avec les données</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Les meilleures décisions se prennent avec les meilleures données. Notre plateforme Analytics IA centralise vos sources, prédit vos tendances et vous alerte avant les problèmes.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Démo Analytics Paris →</a>
+        <a href="/services/analytics" class="btn btn-outline">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: 'Temps réel', l: 'Dashboard live', d: 'Données actualisées en continu' },
+          { n: '99.5%', l: 'Précision IA', d: 'Modèles prédictifs validés' },
+          { n: '-40%', l: 'Décisions erronées', d: 'Grâce à la data IA' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number" style="font-size:2.5rem;">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <h2 style="margin-bottom:1.5rem;">Analytics <span class="gradient-text">pour Paris</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Paris concentre des entreprises de toutes tailles dans tous les secteurs. Notre Analytics IA s'adapte à votre contexte : finance, retail, services, tech, luxe, tourisme.</p>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Connexion native à vos outils parisiens préférés : Salesforce, HubSpot, Google Analytics, votre CRM interne, vos API métier.</p>
+          <a href="/contact" class="btn btn-primary">Voir une démo live →</a>
+        </div>
+        <div class="card tilt-card">
+          <h3 style="margin-bottom:1rem; color:var(--cyan);">Fonctionnalités clés</h3>
+          {[
+            "Dashboard temps réel multi-sources",
+            "Forecasting ventes IA (précision 90%+)",
+            "Détection d'anomalies automatique",
+            "Rapports auto hebdomadaires",
+            "Alertes SMS/Slack personnalisées",
+            "Segmentation client IA"
+          ].map(p => (
+            <div style="display:flex; align-items:center; gap:0.625rem; padding:0.5rem 0; border-bottom:1px solid var(--border); color:var(--text-muted); font-size:0.875rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Votre dashboard Analytics IA<br/><span class="gradient-text">opérationnel en 1 semaine</span></h2>
+      <a href="/contact" class="btn btn-primary">Démarrer mes analytics →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

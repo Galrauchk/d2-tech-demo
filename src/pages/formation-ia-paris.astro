@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Formation IA Paris — Formez vos Équipes à l'Intelligence Artificielle | Nexus AI"
+  description="Formation IA à Paris pour entreprises. Sessions mensuelles inter-entreprises et intra sur site. ChatGPT, LLMs, automation IA. Eligible OPCO. Satisfaction 4.9/5."
+>
+  <Header slot="header" />
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a><span class="breadcrumb-sep">/</span>
+        <a href="/villes/paris">Paris</a><span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Formation IA</span>
+      </nav>
+      <div class="badge badge-blue mb-3" style="background:rgba(0,102,255,0.1); color:#60a5fa; border:1px solid rgba(0,102,255,0.2);">📍 Paris · Formation IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">Formation IA Paris<br/><span class="gradient-text">Maîtrisez l'IA en 2 jours</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">Sessions de formation IA à Paris chaque mois. Adaptées aux besoins des entreprises parisiennes. Présentiel dans nos locaux Paris 8ème ou intra-entreprise sur votre site.</p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Réserver une session Paris →</a>
+        <a href="/services/formation-ia" class="btn btn-outline">Voir les programmes</a>
+      </div>
+    </div>
+  </div>
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '4.9/5', l: 'Satisfaction', d: 'Note post-formation Paris' },
+          { n: '+60%', l: 'Productivité', d: "Gain moyen après formation" },
+          { n: '100%', l: 'Pratique', d: 'Cas réels de votre secteur' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <h2 style="margin-bottom:1.5rem;">Formation IA <span class="gradient-text">à Paris</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Sessions inter-entreprises mensuelles dans nos bureaux Paris 8ème. Maximum 12 participants pour garantir la qualité des échanges et du suivi individualisé.</p>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Formation intra-entreprise disponible dans vos locaux parisiens sur demande. Contenu adapté à votre secteur et à vos outils internes.</p>
+          <a href="/contact" class="btn btn-primary">Voir les prochaines sessions →</a>
+        </div>
+        <div class="card tilt-card">
+          <h3 style="margin-bottom:1rem; color:var(--cyan);">Prochaines sessions Paris</h3>
+          {[
+            { date: 'Avril 2025', title: 'Formation IA Initiation — 1 jour', places: '4 places restantes' },
+            { date: 'Avril 2025', title: 'Formation IA Avancé — 2 jours', places: '6 places restantes' },
+            { date: 'Mai 2025', title: 'Formation IA Initiation — 1 jour', places: '12 places' },
+            { date: 'Mai 2025', title: 'Formation IA Expert — 3 jours', places: '8 places' }
+          ].map(s => (
+            <div style="padding:0.75rem 0; border-bottom:1px solid var(--border);">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div>
+                  <div style="font-weight:600; font-size:0.875rem;">{s.title}</div>
+                  <div style="color:var(--text-muted); font-size:0.8125rem;">{s.date}</div>
+                </div>
+                <span class="badge badge-cyan" style="font-size:0.625rem; padding:0.125rem 0.5rem;">{s.places}</span>
+              </div>
+            </div>
+          ))}
+          <a href="/contact" class="btn btn-primary w-full" style="justify-content:center; margin-top:1rem;">S'inscrire →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Formation IA Paris<br/><span class="gradient-text">éligible OPCO</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Prenez en charge votre formation via votre OPCO. Nos formations sont éligibles aux financements de formation professionnelle continue.</p>
+      <a href="/contact" class="btn btn-primary">Renseignements financement →</a>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Layout>

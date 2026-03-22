@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Nexus AI Bordeaux",
+  "description": "Agence IA et automatisation à Bordeaux — Intelligence artificielle pour PME et ETI girondines",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bordeaux",
+    "postalCode": "33000",
+    "addressCountry": "FR"
+  },
+  "areaServed": { "@type": "City", "name": "Bordeaux" }
+};
+---
+
+<Layout
+  title="Agence IA Bordeaux — Automation & Intelligence Artificielle | Nexus AI"
+  description="Nexus AI à Bordeaux. Solutions IA pour PME et ETI girondines : automation, SEO IA, chatbots, analytics. Nouvelle-Aquitaine. Contactez-nous."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Villes</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Bordeaux</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Bordeaux</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Agence IA à Bordeaux<br/>
+        <span class="gradient-text">Nouvelle-Aquitaine</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Bordeaux, ville en pleine transformation. Nexus AI accompagne les entreprises bordelaises dans l'adoption de l'IA pour gagner en compétitivité.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">RDV à Bordeaux →</a>
+        <a href="/services/automation-ia" class="btn btn-outline">Nos services</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3">
+        {[
+          { icon: '🍷', t: 'Agro-alimentaire & Vins', d: "La filière vin bordelaise intègre l'IA pour optimiser la vinification, la distribution et le marketing international." },
+          { icon: '✈️', t: 'Aéronautique', d: "Bordeaux est un hub aéronautique majeur. L'IA optimise la maintenance prédictive, la chaîne de production et la qualité." },
+          { icon: '🏗️', t: 'Immobilier & Construction', d: "Bordeaux connaît une forte croissance immobilière. L'IA optimise la gestion, la vente et les services aux occupants." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in" style="align-items:center;">
+        <div>
+          <h2 style="margin-bottom:1.5rem;">L'écosystème <span class="gradient-text">tech bordelais</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Bordeaux Tech, Darwin Ecosystème, Bordeaux Métropole Aménagement — l'écosystème d'innovation bordelais est dynamique et accueillant.</p>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Nexus AI intervient régulièrement à Bordeaux et en Nouvelle-Aquitaine pour des projets d'automation, de formation et de transformation digitale IA.</p>
+          <a href="/contact" class="btn btn-primary">Démarrer à Bordeaux →</a>
+        </div>
+        <div class="card fade-in">
+          <h3 style="margin-bottom:1.5rem; color:var(--cyan);">Pourquoi Nexus AI à Bordeaux ?</h3>
+          {[
+            "Connaissance des marchés locaux (vins, aéro, tourisme)",
+            "Déplacements sur site possibles",
+            "Réseau de partenaires locaux",
+            "Formations à Bordeaux chaque trimestre"
+          ].map(p => (
+            <div style="display:flex; align-items:center; gap:0.625rem; padding:0.625rem 0; border-bottom:1px solid var(--border); font-size:0.9375rem; color:var(--text-muted);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Votre transformation IA<br/><span class="gradient-text">commence à Bordeaux</span></h2>
+      <a href="/contact" class="btn btn-primary">Prendre rendez-vous →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

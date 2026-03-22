@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="SEO IA Toulouse — Référencement Naturel IA pour la Ville Rose | Nexus AI"
+  description="Expert SEO IA à Toulouse et en Occitanie. Dominez Google sur vos mots-clés locaux. Audit SEO gratuit. Résultats en 4 mois. Aéronautique, services, tech."
+>
+  <Header slot="header" />
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a><span class="breadcrumb-sep">/</span>
+        <a href="/villes/toulouse">Toulouse</a><span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">SEO IA</span>
+      </nav>
+      <div class="badge badge-violet mb-3">📍 Toulouse · SEO IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">SEO IA Toulouse<br/><span class="gradient-text">Visibilité locale & nationale</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">Toulouse, 4ème ville de France. Être visible sur Google à Toulouse, c'est accéder à 1,5 million d'habitants et à un tissu économique diversifié. Notre SEO IA vous y positionne.</p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Audit SEO Toulouse →</a>
+        <a href="/services/seo-ia" class="btn btn-outline">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '+180%', l: 'Trafic organique', d: 'En 6 mois' },
+          { n: 'Top 3', l: 'Positions Google', d: 'Sur mots-clés Toulouse' },
+          { n: '48h', l: 'Audit livré', d: 'Rapport complet' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Audit SEO Toulouse<br/><span class="gradient-text">gratuit en 48h</span></h2>
+      <a href="/contact" class="btn btn-primary">Demander mon audit →</a>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Layout>

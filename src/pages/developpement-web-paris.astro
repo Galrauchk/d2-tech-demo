@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Développement Web Paris",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "areaServed": { "@type": "City", "name": "Paris" }
+};
+---
+
+<Layout
+  title="Développement Web Paris — Sites & Apps IA Ultra-Performants | Nexus AI"
+  description="Agence développement web à Paris. Sites Astro, Next.js, React avec IA intégrée. Performance 98+/100. Devis gratuit en 24h. Équipe basée Paris 8ème."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/villes/paris">Paris</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Développement Web</span>
+      </nav>
+      <div class="badge badge-blue mb-3" style="background:rgba(0,102,255,0.1); color:#60a5fa; border:1px solid rgba(0,102,255,0.2);">📍 Paris · Dev Web</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Développement Web Paris<br/>
+        <span class="gradient-text">IA-first, premium</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Agence de développement web parisienne spécialisée en sites et applications IA. Stack moderne (Astro, Next.js, React). Performance garantie 98+/100.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Devis gratuit Paris →</a>
+        <a href="/services/developpement-web" class="btn btn-outline">Nos réalisations</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { icon: '⚡', t: 'Sites Ultra-Rapides', d: "Astro, Next.js, technologies statiques. Chargement < 1s. Score Lighthouse 98+. SEO parfait dès le départ." },
+          { icon: '🤖', t: 'IA Intégrée', d: "Chatbots, recommandations personnalisées, search intelligent. L'IA améliore l'expérience et les conversions." },
+          { icon: '📱', t: 'Responsive & PWA', d: "100% responsive. Applications PWA installables sur mobile. Expérience native-like pour vos utilisateurs." }
+        ].map(f => (
+          <div class="card tilt-card">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <h2 style="margin-bottom:1.5rem;">Votre partenaire web<br/><span class="gradient-text">à Paris</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Notre équipe de développeurs parisiens est spécialisée dans les technologies modernes et l'intégration IA. Nous créons des sites qui convertissent et qui plaisent à Google.</p>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Réunions sur site dans vos bureaux parisiens, communication quotidienne sur Slack, démos hebdomadaires. Nous travaillons en totale transparence.</p>
+          <a href="/contact" class="btn btn-primary">Demander un devis →</a>
+        </div>
+        <div class="card tilt-card">
+          <h3 style="margin-bottom:1rem; color:var(--cyan);">Nos projets Paris</h3>
+          {[
+            "Sites vitrine & corporate",
+            "E-commerce Shopify & WooCommerce",
+            "Plateformes SaaS",
+            "Applications React/Next.js",
+            "Refonte & migration",
+            "Intégration IA (OpenAI, Anthropic)"
+          ].map(p => (
+            <div style="display:flex; align-items:center; gap:0.625rem; padding:0.5rem 0; border-bottom:1px solid var(--border); color:var(--text-muted); font-size:0.875rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Devis gratuit<br/><span class="gradient-text">en 24h</span></h2>
+      <a href="/contact" class="btn btn-primary">Obtenir mon devis →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

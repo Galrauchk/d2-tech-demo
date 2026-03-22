@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Analytics IA",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "description": "Analytics prédictifs et tableaux de bord IA pour décider avec les données",
+  "areaServed": "FR"
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Services" },
+    { "@type": "ListItem", "position": 3, "name": "Analytics IA" }
+  ]
+};
+---
+
+<Layout
+  title="Analytics IA — Tableaux de Bord Prédictifs & Data Intelligence | Nexus AI"
+  description="Analytics IA pour piloter votre business avec précision. Dashboards temps réel, forecasting, détection d'anomalies. Décidez mieux, plus vite. Paris, Montpellier."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Services</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Analytics IA</span>
+      </nav>
+      <div class="badge badge-violet mb-3">Data Intelligence</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Analytics IA<br/>
+        <span class="gradient-text">Pilotez avec les données</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Transformez vos données brutes en insights actionnables. Dashboards temps réel, prédictions IA, alertes automatiques — tout pour décider mieux et plus vite.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Configurer mes analytics →</a>
+        <a href="/demo" class="btn btn-outline">Voir un dashboard live</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '3 sem.', l: "Anticipation", d: 'Prédiction des tendances' },
+          { n: 'Temps réel', l: 'Dashboard', d: 'Données live 24/7' },
+          { n: '99.5%', l: 'Précision IA', d: 'Modèles prédictifs' },
+          { n: '-40%', l: 'Décisions erronées', d: 'Grâce aux données IA' }
+        ].map(s => (
+          <div class="card text-center tilt-card fade-in">
+            <div class="stat-number" style="font-size:2.5rem;">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.8125rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Fonctionnalités</div>
+        <h2>Analytics <span class="gradient-text">nouvelle génération</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { icon: '📊', t: 'Dashboards temps réel', d: "Visualisez vos KPIs business en temps réel sur des tableaux de bord personnalisés. Partagez avec votre équipe en un clic." },
+          { icon: '🔮', t: 'Forecasting IA', d: "Prédictions de ventes, trafic, demande avec 85-95% de précision. Planifiez vos ressources semaines à l'avance." },
+          { icon: '🚨', t: 'Détection d\'anomalies', d: "Alertes automatiques dès qu'une métrique sort de sa trajectoire normale. Réagissez avant que les problèmes s'amplifient." },
+          { icon: '🎯', t: 'Segmentation cliente IA', d: "Segmentation automatique de vos clients par comportement, valeur, risque de churn. Personnalisez vos actions marketing." },
+          { icon: '💡', t: 'Insights actionnables', d: "L'IA ne se contente pas de présenter les données, elle vous dit quoi faire. Recommandations concrètes et priorisées." },
+          { icon: '🔗', t: 'Connexion multi-sources', d: "Centralisez Google Analytics, votre CRM, ERP, e-commerce dans un seul tableau de bord unifié. Plus de silos de données." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Data sources -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container text-center">
+      <div class="fade-in mb-6">
+        <h2>Sources de données <span class="gradient-text">connectées</span></h2>
+        <p style="color:var(--text-muted); max-width:500px; margin:1rem auto 0;">Nexus Analytics se connecte à 50+ sources de données nativement.</p>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;" class="fade-in">
+        {['Google Analytics 4', 'Google Ads', 'Meta Ads', 'HubSpot', 'Salesforce', 'Shopify', 'WooCommerce', 'Stripe', 'Airtable', 'PostgreSQL', 'MySQL', 'BigQuery'].map(t => (
+          <div class="tag">{t}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Pilotez votre business<br/><span class="gradient-text">avec précision</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Déployez votre premier dashboard analytics IA en 1 semaine. Données unifiées, insights immédiats.</p>
+      <a href="/contact" class="btn btn-primary">Démarrer mes analytics →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

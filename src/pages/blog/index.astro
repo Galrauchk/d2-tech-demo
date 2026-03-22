@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog Nexus AI — Intelligence Artificielle & Automatisation",
+  "description": "Articles, guides et ressources sur l'IA en entreprise",
+  "publisher": { "@type": "Organization", "name": "Nexus AI" }
+};
+
+const posts = [
+  {
+    slug: 'automatisation-ia-2025',
+    title: "Automatisation IA en 2025 : le guide complet pour les entreprises françaises",
+    excerpt: "Découvrez comment l'IA révolutionne l'automatisation des processus métier en 2025. Cas d'usage concrets, ROI mesurable et guide d'implémentation pas à pas.",
+    category: 'Automation',
+    date: '15 mars 2025',
+    readTime: '8 min',
+    gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)'
+  },
+  {
+    slug: 'seo-ia-chatgpt',
+    title: "SEO et IA générative : comment ChatGPT transforme le référencement naturel",
+    excerpt: "L'IA générative change radicalement les règles du SEO. Comment adapter votre stratégie de contenu pour dominer Google à l'ère de l'IA. Stratégies actionables.",
+    category: 'SEO',
+    date: '8 mars 2025',
+    readTime: '12 min',
+    gradient: 'linear-gradient(135deg, #7c3aed, #0066ff)'
+  },
+  {
+    slug: 'chatbot-service-client',
+    title: "Chatbot IA vs service client humain : le guide pour trouver le bon équilibre",
+    excerpt: "Comment combiner chatbot IA et agents humains pour offrir un service client exceptionnel 24/7 tout en maîtrisant vos coûts. Retours d'expérience et données.",
+    category: 'Chatbot',
+    date: '1 mars 2025',
+    readTime: '10 min',
+    gradient: 'linear-gradient(135deg, #00e5ff, #7c3aed)'
+  },
+  {
+    slug: 'analytics-predictifs',
+    title: "Analytics prédictifs : comment anticiper les tendances de votre marché avec l'IA",
+    excerpt: "Les modèles prédictifs IA permettent d'anticiper ventes, demande et comportements clients avec 85-95% de précision. Guide pratique pour les décideurs.",
+    category: 'Analytics',
+    date: '22 février 2025',
+    readTime: '9 min',
+    gradient: 'linear-gradient(135deg, #0066ff, #7c3aed)'
+  },
+  {
+    slug: 'formation-ia-equipes',
+    title: "Former ses équipes à l'IA : méthodes, outils et retours d'expérience en 2025",
+    excerpt: "Comment construire une culture IA dans votre entreprise. Programme de formation, outils recommandés, indicateurs de succès. Retours de 50 entreprises formées.",
+    category: 'Formation',
+    date: '15 février 2025',
+    readTime: '11 min',
+    gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)'
+  }
+];
+---
+
+<Layout
+  title="Blog Nexus AI — Intelligence Artificielle & Automatisation en Entreprise"
+  description="Articles experts sur l'IA en entreprise : automation, SEO IA, chatbots, analytics prédictifs. Guides pratiques et retours d'expérience pour accélérer votre transformation digitale."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content text-center">
+      <div class="badge badge-cyan mb-4">Blog IA</div>
+      <h1 style="margin-bottom:1rem;">Ressources <span class="gradient-text">IA & Automatisation</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:540px; margin:0 auto;">Guides pratiques, études de cas et insights pour accélérer votre transformation IA.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <!-- Categories filter -->
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:3rem;" class="fade-in">
+        {['Tous', 'Automation', 'SEO', 'Chatbot', 'Analytics', 'Formation'].map(cat => (
+          <button style="padding:0.5rem 1rem; border-radius:100px; background:rgba(255,255,255,0.04); border:1px solid var(--border-cyan); color:var(--text-muted); cursor:pointer; font-size:0.875rem; font-weight:500; transition:all 0.2s;"
+            onmouseover="this.style.borderColor='var(--cyan)'; this.style.color='var(--cyan)'"
+            onmouseout="this.style.borderColor='var(--border-cyan)'; this.style.color='var(--text-muted)'">{cat}</button>
+        ))}
+      </div>
+
+      <!-- Posts grid -->
+      <div class="grid-3">
+        {posts.map((post, i) => (
+          <a href={`/blog/${post.slug}`} class="blog-card fade-in">
+            <div class="blog-card-img" style={`background:${post.gradient};`}>
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:1.5rem;">
+                <span class="badge badge-cyan" style="font-size:0.75rem;">{post.category}</span>
+              </div>
+            </div>
+            <div class="blog-card-body">
+              <div style="display:flex; gap:1rem; margin-bottom:0.75rem; font-size:0.8125rem; color:var(--text-muted);">
+                <span>{post.date}</span>
+                <span>·</span>
+                <span>{post.readTime} de lecture</span>
+              </div>
+              <h3 style="font-size:1.125rem; margin-bottom:0.75rem; line-height:1.4;">{post.title}</h3>
+              <p style="color:var(--text-muted); font-size:0.875rem; line-height:1.6;">{post.excerpt}</p>
+              <div style="margin-top:1rem; color:var(--cyan); font-size:0.875rem; font-weight:600;">Lire l'article →</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container" style="max-width:600px; text-align:center;">
+      <div class="fade-in">
+        <div class="badge badge-violet mb-4">Newsletter IA</div>
+        <h2 style="margin-bottom:1rem;">Restez à la pointe<br/><span class="gradient-text">de l'IA</span></h2>
+        <p style="color:var(--text-muted); margin-bottom:2rem;">Chaque semaine, nos experts partagent les dernières innovations IA et comment les appliquer à votre business.</p>
+        <div style="display:flex; gap:0.75rem; max-width:400px; margin:0 auto;">
+          <input type="email" placeholder="votre@email.fr" class="form-input" style="flex:1;" />
+          <button class="btn btn-primary" style="flex-shrink:0; padding:0.875rem 1.5rem;">S'abonner</button>
+        </div>
+        <p style="margin-top:0.75rem; font-size:0.8125rem; color:var(--text-muted);">✓ 0 spam · ✓ Désinscription en 1 clic</p>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

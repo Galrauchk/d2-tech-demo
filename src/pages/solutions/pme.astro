@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Solutions IA pour PME",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "description": "Solutions IA adaptées aux PME françaises pour accélérer leur croissance",
+  "areaServed": "FR"
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Solutions" },
+    { "@type": "ListItem", "position": 3, "name": "PME" }
+  ]
+};
+---
+
+<Layout
+  title="Solutions IA pour PME — Accélérez votre Croissance | Nexus AI"
+  description="Nexus AI propose des solutions IA clé en main pour les PME françaises. Automation, SEO, chatbot, analytics — adaptés à votre budget et vos objectifs. Dès 299€/mois."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Solutions</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">PME</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">Pour les PME</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        L'IA accessible<br/>
+        <span class="gradient-text">pour votre PME</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Vous n'avez pas besoin d'une équipe data science pour bénéficier de l'IA. Nexus AI rend les meilleures technologies accessibles aux PME françaises, à des tarifs adaptés.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Démarrer mon projet PME →</a>
+        <a href="/pricing" class="btn btn-outline">Voir les tarifs</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenges -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">Vos défis</div>
+        <h2>Les PME font face à <span class="gradient-text">des défis réels</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { icon: '⏰', t: 'Manque de temps', d: "Vos équipes passent trop de temps sur des tâches répétitives à faible valeur ajoutée. L'IA libère 20h/semaine en moyenne." },
+          { icon: '💰', t: 'Concurrence des grands comptes', d: "Les grandes entreprises investissent massivement dans l'IA. Nexus AI vous donne accès aux mêmes technologies pour une fraction du coût." },
+          { icon: '📊', t: 'Données inexploitées', d: "Vous avez des données précieuses mais pas les outils pour les analyser. Notre IA transforme vos données en décisions concrètes." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Nos solutions PME</div>
+        <h2>Un pack complet <span class="gradient-text">clé en main</span></h2>
+      </div>
+      <div class="grid-2">
+        {[
+          { icon: '⚡', t: 'Automation des processus', d: "Automatisez facturation, relances, emails, rapports. Vos équipes se concentrent sur le commercial et la relation client.", link: '/services/automation-ia' },
+          { icon: '🔍', t: 'SEO IA pour être trouvé', d: "Apparaissez en première page Google sur vos mots-clés métier. Notre IA génère du contenu optimisé régulièrement.", link: '/services/seo-ia' },
+          { icon: '💬', t: 'Chatbot service client', d: "Ne perdez plus aucun lead. Votre chatbot IA répond 24/7 aux questions, qualifie les prospects et prend les RDV.", link: '/services/chatbot' },
+          { icon: '📈', t: 'Dashboard analytics', d: "Pilotez votre PME avec des données réelles. CA prévisionnel, taux de conversion, rentabilité par produit — tout en temps réel.", link: '/services/analytics' }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem; margin-bottom:1rem;">{f.d}</p>
+            <a href={f.link} style="color:var(--cyan); text-decoration:none; font-size:0.875rem; font-weight:600;">En savoir plus →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats PME -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Résultats concrets<br/><span class="gradient-text">chez nos PME clientes</span></h2>
+      </div>
+      <div class="grid-4 fade-in">
+        {[
+          { n: '87%', l: 'des PME clientes', d: 'Renouvellent leur contrat chaque année' },
+          { n: '4.2x', l: 'ROI moyen PME', d: 'Sur 12 mois' },
+          { n: '2 sem.', l: 'Mise en production', d: 'Du projet au déploiement' },
+          { n: '100%', l: 'Accompagnement', d: 'Support dédié inclus' }
+        ].map(s => (
+          <div class="text-center fade-in">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Votre PME mérite<br/><span class="gradient-text">les meilleures technologies</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Dès 299€/mois, accédez à une suite complète d'outils IA pour compétir à armes égales avec les grandes entreprises.</p>
+      <a href="/contact" class="btn btn-primary">Démarrer gratuitement →</a>
+      <p style="margin-top:1rem; font-size:0.875rem; color:var(--text-muted);">✓ Essai 30 jours · ✓ Accompagnement inclus · ✓ Sans engagement</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

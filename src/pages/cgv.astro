@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Conditions Générales de Vente — Nexus AI"
+  description="CGV Nexus AI. Conditions générales de vente et d'utilisation de nos solutions IA. Contrats, paiement, résiliation, garanties."
+  noindex={true}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid" style="padding:8rem 0 4rem;">
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">CGV</span>
+      </nav>
+      <h1 style="font-size:clamp(2rem,4vw,3rem); margin-bottom:0.5rem;">Conditions Générales <span class="gradient-text">de Vente</span></h1>
+      <p style="color:var(--text-muted);">Version en vigueur : mars 2025</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container" style="max-width:800px;">
+      {[
+        {
+          title: "Article 1 — Objet",
+          content: "Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre Nexus AI SAS (ci-après « Prestataire ») et toute personne morale ou physique (ci-après « Client ») souhaitant bénéficier de ses services d'intelligence artificielle, d'automatisation, de référencement naturel et de développement web."
+        },
+        {
+          title: "Article 2 — Services proposés",
+          content: "Nexus AI SAS propose les services suivants : automation IA, SEO Intelligence IA, développement web, chatbot IA, analytics prédictifs, formation IA. La description détaillée de chaque service est disponible sur le site web et dans les devis personnalisés."
+        },
+        {
+          title: "Article 3 — Tarifs et modalités de paiement",
+          content: `Les tarifs sont exprimés en euros hors taxes (HT). La TVA applicable est de 20%.
+
+Plans en abonnement mensuel : prélèvement automatique le 1er de chaque mois.
+Plans annuels : facturation en une fois à la souscription.
+Projets sur devis : acompte de 40% à la signature, solde à la livraison.
+
+Les factures sont payables à 30 jours date de facture pour les clients en compte. Tout retard de paiement entraîne des pénalités de 3 fois le taux légal.`
+        },
+        {
+          title: "Article 4 — Durée et résiliation",
+          content: `Les abonnements mensuels sont sans engagement. Résiliables à tout moment avec préavis de 30 jours.
+
+Les abonnements annuels sont engagés pour 12 mois. En cas de résiliation anticipée, le Client est remboursé au prorata des mois non consommés, déduction faite de la remise annuelle accordée.
+
+La résiliation doit être notifiée par email à legal@nexus-ai.fr avec confirmation de réception.`
+        },
+        {
+          title: "Article 5 — Obligations des parties",
+          content: `Nexus AI SAS s'engage à : fournir les services décrits avec le niveau de qualité annoncé, maintenir une disponibilité de 99.5% minimum (99.9% pour le plan Growth, 99.99% pour l'Enterprise), assurer la confidentialité des données du Client, répondre aux demandes de support dans les délais annoncés.
+
+Le Client s'engage à : fournir les accès et informations nécessaires à la bonne exécution des services, payer les factures dans les délais convenus, utiliser les services conformément à leur destination légale.`
+        },
+        {
+          title: "Article 6 — Propriété intellectuelle",
+          content: "Les solutions développées spécifiquement pour le Client dans le cadre d'un contrat sur devis lui appartiennent intégralement après paiement complet. La plateforme Nexus AI (code, algorithmes, modèles IA) reste la propriété exclusive de Nexus AI SAS. Le Client bénéficie d'une licence d'utilisation non-exclusive pendant la durée de son abonnement."
+        },
+        {
+          title: "Article 7 — Données personnelles",
+          content: "Nexus AI SAS agit en qualité de sous-traitant des données personnelles du Client. Un Accord de Traitement des Données (DPA/ATD) conforme au RGPD est signable sur demande. Les données sont hébergées en France et ne sont jamais cédées à des tiers."
+        },
+        {
+          title: "Article 8 — Limitation de responsabilité",
+          content: "La responsabilité de Nexus AI SAS est limitée au montant des sommes versées par le Client au cours des 12 derniers mois. Nexus AI SAS ne peut être tenu responsable des préjudices indirects, pertes de données, pertes d'exploitation ou atteintes à l'image."
+        },
+        {
+          title: "Article 9 — Droit applicable et litiges",
+          content: "Les présentes CGV sont soumises au droit français. Tout litige sera soumis à la compétence exclusive des tribunaux de Montpellier (Hérault), France. Les parties s'engagent à tenter une résolution amiable avant toute action en justice."
+        }
+      ].map(article => (
+        <div class="fade-in" style="margin-bottom:2.5rem;">
+          <h2 style="font-size:1.25rem; margin-bottom:1rem; color:var(--cyan);">{article.title}</h2>
+          <div style="color:var(--text-muted); line-height:1.8; white-space:pre-line;">{article.content}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

@@ -1,0 +1,200 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  schema?: object | object[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/og-default.jpg',
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = 'https://d2-tech-demo.netlify.app';
+const fullCanonical = canonical || `${siteUrl}${Astro.url.pathname}`;
+
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nexus AI",
+  "url": siteUrl,
+  "logo": `${siteUrl}/logo.svg`,
+  "telephone": "+33184000000",
+  "email": "hello@nexus-ai.fr",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Paris",
+      "postalCode": "75008",
+      "addressCountry": "FR"
+    }
+  ],
+  "sameAs": [
+    "https://linkedin.com/company/nexus-ai",
+    "https://twitter.com/nexus_ai_fr"
+  ]
+};
+
+const searchSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": siteUrl,
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/recherche?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  {noindex && <meta name="robots" content="noindex,nofollow" />}
+  {!noindex && <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />}
+
+  <link rel="canonical" href={fullCanonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={fullCanonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Nexus AI" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(searchSchema)} />
+  {schemas.map(s => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
+</head>
+<body class="noise">
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Header slot -->
+  <slot name="header" />
+
+  <!-- Main content -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer slot -->
+  <slot name="footer" />
+
+  <script>
+    // Scroll progress
+    const bar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const s = document.documentElement;
+      const pct = (window.scrollY / (s.scrollHeight - s.clientHeight)) * 100;
+      if (bar) bar.style.width = pct + '%';
+    });
+
+    // Custom cursor
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      if (dot) { dot.style.left = mx + 'px'; dot.style.top = my + 'px'; }
+    });
+    function animRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+
+    // Dark mode toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+    const saved = localStorage.getItem('theme');
+    if (saved) html.setAttribute('data-theme', saved);
+
+    // Fade in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => obs.observe(el));
+
+    // 3D Tilt cards
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e as MouseEvent).clientX - rect.left;
+        const y = (e as MouseEvent).clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rotY = ((x - cx) / cx) * 12;
+        const rotX = ((cy - y) / cy) * 12;
+        (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(8px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        (card as HTMLElement).style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+      });
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    }
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        item?.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

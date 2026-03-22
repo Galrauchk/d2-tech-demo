@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automation IA Paris",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "areaServed": { "@type": "City", "name": "Paris" },
+  "description": "Automatisation IA pour entreprises parisiennes — Nexus AI"
+};
+---
+
+<Layout
+  title="Automation IA Paris — Automatisez vos Processus en Île-de-France | Nexus AI"
+  description="Expert automation IA à Paris. Automatisez vos processus métier avec l'IA. Audit offert. Déploiement en 2-4 semaines. Intervention sur site Paris et Île-de-France."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/villes/paris">Paris</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Automation IA</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Paris · Automation IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Automation IA à Paris<br/>
+        <span class="gradient-text">Libérez vos équipes</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Entreprise parisienne ? Nos consultants IA se déplacent dans vos bureaux pour auditer et automatiser vos processus. Gagnez 20h/semaine dès le premier mois.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Audit gratuit Paris →</a>
+        <a href="/services/automation-ia" class="btn btn-outline">Découvrir l'automation IA</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '20h', l: 'Gagnées/semaine', d: 'Par équipe de 5 personnes' },
+          { n: '95%', l: "Moins d'erreurs", d: 'Sur les processus automatisés' },
+          { n: '2-4 sem.', l: 'Déploiement', d: 'Du premier audit au go-live' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-2">
+        <div class="fade-in">
+          <h2 style="margin-bottom:1.5rem;">Automation IA <span class="gradient-text">pour Paris</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Les entreprises parisiennes font face à des défis spécifiques : coût de la main-d'oeuvre élevé, compétition intense, clients exigeants. L'automation IA adresse directement ces défis.</p>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Notre équipe parisienne connaît parfaitement l'écosystème business local. Nous intervenons dans tous les arrondissements et en Île-de-France (92, 93, 94, 78, 91, 95).</p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+            {["Audit de processus en présentiel", "Déploiement sur mesure", "Formation de vos équipes sur site", "Support continu en français"].map(p => (
+              <li style="display:flex; align-items:center; gap:0.625rem; color:var(--text-muted);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="card tilt-card fade-in">
+          <h3 style="margin-bottom:1.5rem;">Processus automatisés <span class="gradient-text">à Paris</span></h3>
+          {['Emails & communications', 'Pipeline commercial CRM', 'Rapports & reporting', 'Facturation & relances', 'Support client', 'Data entry & saisie'].map(p => (
+            <div style="display:flex; align-items:center; gap:0.625rem; padding:0.625rem 0; border-bottom:1px solid var(--border); color:var(--text-muted); font-size:0.9375rem;">
+              <span style="color:var(--cyan);">⚡</span>
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Audit automation<br/><span class="gradient-text">offert à Paris</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Nos consultants se déplacent dans vos bureaux parisiens pour un audit complet de vos processus. Gratuit et sans engagement.</p>
+      <a href="/contact" class="btn btn-primary">Réserver mon audit →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

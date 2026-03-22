@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Automation IA Lyon — Automatisez vos Processus Auvergne-Rhône-Alpes | Nexus AI"
+  description="Expert automation IA à Lyon. Automatisez vos processus pour entreprises lyonnaises et de la région AURA. Audit offert. ROI garanti. Intervention sur site."
+>
+  <Header slot="header" />
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a><span class="breadcrumb-sep">/</span>
+        <a href="/villes/lyon">Lyon</a><span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Automation IA</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Lyon · Automation IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">Automation IA Lyon<br/><span class="gradient-text">Auvergne-Rhône-Alpes</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">Automatisez vos processus métier à Lyon. Nos consultants IA se déplacent en Auvergne-Rhône-Alpes pour auditer et déployer vos workflows IA. Gagnez 20h/semaine.</p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Audit gratuit Lyon →</a>
+        <a href="/services/automation-ia" class="btn btn-outline">Nos solutions</a>
+      </div>
+    </div>
+  </div>
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '20h', l: 'Gagnées/semaine', d: 'Par équipe de 5' },
+          { n: 'x4', l: 'ROI moyen', d: 'Sur 12 mois' },
+          { n: '95%', l: "Moins d'erreurs", d: 'Sur processus auto.' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Audit automation<br/><span class="gradient-text">offert à Lyon</span></h2>
+      <a href="/contact" class="btn btn-primary">Réserver mon audit →</a>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Layout>

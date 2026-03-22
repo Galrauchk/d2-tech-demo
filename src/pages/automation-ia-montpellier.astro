@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Automation IA Montpellier",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "areaServed": { "@type": "City", "name": "Montpellier" }
+};
+---
+
+<Layout
+  title="Automation IA Montpellier — Automatisation Processus Occitanie | Nexus AI"
+  description="Expert automation IA à Montpellier et en Occitanie. Automatisez vos processus depuis notre siège montpelliérain. Audit offert. ROI garanti en 30 jours."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/villes/montpellier">Montpellier</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Automation IA</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Montpellier · Siège Nexus AI</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Automation IA Montpellier<br/>
+        <span class="gradient-text">Depuis notre QG</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Montpellier est notre ville. Nous connaissons parfaitement le tissu économique local (santé, tourisme, tech, services) et adaptons nos solutions IA à vos réalités.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Rencontrons-nous →</a>
+        <a href="/services/automation-ia" class="btn btn-outline">Voir l'automation IA</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <h2 style="margin-bottom:1.5rem;">L'automation IA <span class="gradient-text">à Montpellier</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Le bassin d'emploi de Montpellier est caractérisé par une forte présence de services (santé, tourisme, ESN), de startups tech et de PME à croissance rapide.</p>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Ces secteurs ont des besoins spécifiques en automation : gestion des réservations, coordination inter-services, reporting réglementaire, gestion des talents. Nos solutions sont adaptées.</p>
+          <a href="/contact" class="btn btn-primary" style="margin-top:0.5rem;">Audit gratuit →</a>
+        </div>
+        <div class="card tilt-card">
+          <h3 style="margin-bottom:1rem; color:var(--cyan);">Secteurs accompagnés à Montpellier</h3>
+          {['CHU & cliniques (hors données patients)', 'Agences de tourisme et hôtellerie', 'ESN et entreprises tech', 'Commerce et retail', 'Associations et institutions', 'Immobilier et property management'].map(s => (
+            <div style="display:flex; align-items:center; gap:0.625rem; padding:0.5rem 0; border-bottom:1px solid var(--border); color:var(--text-muted); font-size:0.875rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {s}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Venez nous voir<br/><span class="gradient-text">à Montpellier</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Notre équipe montpelliéraine vous accueille pour un audit de vos processus et une démonstration de nos solutions IA.</p>
+      <a href="/contact" class="btn btn-primary">Prendre rendez-vous →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const teamSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Équipe Nexus AI",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Person", "name": "Alexandre Moreau", "jobTitle": "CEO & Co-fondateur" } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Person", "name": "Sophie Laurent", "jobTitle": "CTO & Co-fondatrice" } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "Person", "name": "Thomas Nguyen", "jobTitle": "Chief AI Officer" } }
+  ]
+};
+
+const team = [
+  { name: 'Alexandre Moreau', role: 'CEO & Co-fondateur', initials: 'AM', desc: "Ingénieur IA diplômé de Centrale Paris. 10 ans d'expérience en data science et machine learning. Ancien lead AI chez une licorne française.", skills: ['Strategy', 'Machine Learning', 'Business Dev'] },
+  { name: 'Sophie Laurent', role: 'CTO & Co-fondatrice', initials: 'SL', desc: "PhD en informatique, Université Montpellier. Experte en NLP et LLMs. Auteure de 8 publications scientifiques sur l'IA conversationnelle.", skills: ['NLP', 'LLMs', 'Architecture'] },
+  { name: 'Thomas Nguyen', role: 'Chief AI Officer', initials: 'TN', desc: "Ancien chercheur chez Inria. Spécialiste des modèles prédictifs et du reinforcement learning. 12 ans d'expérience en IA appliquée.", skills: ['Predictive AI', 'MLOps', 'Research'] },
+  { name: 'Camille Rousseau', role: 'Head of Product', initials: 'CR', desc: "Ex-Product Manager chez Doctolib et Dataiku. Obsédée par l'expérience utilisateur et le Product-Market Fit. MBA HEC Paris.", skills: ['Product', 'UX', 'Growth'] },
+  { name: 'Marc Dubois', role: 'Head of Engineering', initials: 'MD', desc: "Full-stack & DevOps senior. 15 ans de développement. Expert Next.js, Python, infrastructure cloud. Contributeur open source actif.", skills: ['Full-stack', 'DevOps', 'Open Source'] },
+  { name: 'Élodie Martin', role: 'Chief Revenue Officer', initials: 'EM', desc: "Ancienne directrice commerciale chez Salesforce France. Expert en vente consultative B2B et développement de partenariats stratégiques.", skills: ['Sales', 'Partnerships', 'SaaS'] }
+];
+---
+
+<Layout
+  title="Équipe Nexus AI — Rencontrez nos Experts IA | Nexus AI"
+  description="Découvrez l'équipe Nexus AI : ingénieurs IA, chercheurs, product managers et commerciaux passionnés. 25 experts au service de votre transformation IA."
+  schema={teamSchema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content text-center">
+      <nav class="breadcrumb" style="justify-content:center;">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Équipe</span>
+      </nav>
+      <div class="badge badge-cyan mb-4">Notre équipe</div>
+      <h1 style="margin-bottom:1rem;">25 experts <span class="gradient-text">passionnés par l'IA</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:540px; margin:0 auto;">Ingénieurs, chercheurs, product managers et commerciaux unis par une même mission : rendre l'IA impactante pour votre business.</p>
+    </div>
+  </div>
+
+  <!-- Core team -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">Direction</div>
+        <h2>Les <span class="gradient-text">co-fondateurs</span></h2>
+      </div>
+      <div class="grid-3">
+        {team.map((member, i) => (
+          <div class="card tilt-card team-card fade-in">
+            <div class="team-avatar">{member.initials}</div>
+            <h3 style="margin-bottom:0.25rem;">{member.name}</h3>
+            <div class="badge badge-cyan mb-3" style="font-size:0.75rem;">{member.role}</div>
+            <p style="color:var(--text-muted); font-size:0.875rem; line-height:1.6; margin-bottom:1rem;">{member.desc}</p>
+            <div style="display:flex; flex-wrap:wrap; gap:0.25rem; justify-content:center;">
+              {member.skills.map(s => <span class="tag" style="font-size:0.75rem;">{s}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Culture -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Culture</div>
+        <h2>La vie chez <span class="gradient-text">Nexus AI</span></h2>
+      </div>
+      <div class="grid-2">
+        {[
+          { icon: '🏡', t: 'Remote-first', d: "Full remote possible. Des bureaux à Paris et Montpellier pour ceux qui le souhaitent. Flexibilité totale sur les horaires." },
+          { icon: '📚', t: 'Formation continue', d: "1000€/an de budget formation par personne. Conférences, cours en ligne, livres, certifications. L'apprentissage est dans notre ADN." },
+          { icon: '🎯', t: 'Ownership réel', d: "Chaque collaborateur a un vrai impact. Pas de middle management inutile. Vos idées peuvent devenir des fonctionnalités produit." },
+          { icon: '⚡', t: 'Impact mesurable', d: "On mesure tout. L'impact de vos contributions est visible et valorisé. Progression rapide basée sur les résultats." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Join us -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <div class="badge badge-violet mb-4">On recrute !</div>
+      <h2 style="margin-bottom:1rem;">Rejoignez <span class="gradient-text">Nexus AI</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Ingénieur IA, développeur full-stack, commercial B2B, product designer — nous cherchons des talents qui veulent changer la façon dont les entreprises travaillent.</p>
+      <a href="/contact" class="btn btn-primary">Voir les offres →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

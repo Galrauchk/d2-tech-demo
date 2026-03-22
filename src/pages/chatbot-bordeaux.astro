@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Chatbot IA Bordeaux",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "areaServed": { "@type": "City", "name": "Bordeaux" }
+};
+---
+
+<Layout
+  title="Chatbot IA Bordeaux — Service Client 24/7 pour PME Girondines | Nexus AI"
+  description="Déployez un chatbot IA à Bordeaux et en Nouvelle-Aquitaine. 80% résolution automatique, configuration en 2 semaines. Solutions adaptées aux secteurs bordelais."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/villes/bordeaux">Bordeaux</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Chatbot IA</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Bordeaux · Chatbot IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Chatbot IA Bordeaux<br/>
+        <span class="gradient-text">Nouvelle-Aquitaine</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Automatisez votre service client bordelais avec un chatbot IA intelligent. Idéal pour le tourisme viticole, l'hôtellerie, le retail et les services professionnels.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Déployer mon chatbot →</a>
+        <a href="/services/chatbot" class="btn btn-outline">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { icon: '🍷', t: 'Vignobles & Œnotourisme', d: "Chatbot multilingue pour accueillir les visiteurs internationaux, gérer les réservations de dégustations et promouvoir vos vins." },
+          { icon: '🏨', t: 'Hôtellerie Bordelaise', d: "Service conciergerie IA, prise de réservation, FAQ hôtel en 5 langues. Bordeaux attire 10M de touristes par an." },
+          { icon: '🏢', t: 'Services B2B', d: "Qualification des prospects, prise de RDV, FAQ services. Pour les cabinets de conseil, avocats, experts-comptables." }
+        ].map(f => (
+          <div class="card tilt-card">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Chatbot IA<br/><span class="gradient-text">adapté à Bordeaux</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Déployé en 2 semaines, adapté aux spécificités bordelaises. Essai gratuit 30 jours.</p>
+      <a href="/contact" class="btn btn-primary">Démarrer maintenant →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Nexus AI Montpellier",
+  "description": "Agence IA et automatisation à Montpellier — Siège social de Nexus AI",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Montpellier",
+    "postalCode": "34000",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33467000000",
+  "areaServed": { "@type": "City", "name": "Montpellier" }
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Villes" },
+    { "@type": "ListItem", "position": 3, "name": "Montpellier" }
+  ]
+};
+---
+
+<Layout
+  title="Agence IA Montpellier — Automation & Intelligence Artificielle | Nexus AI"
+  description="Nexus AI, siège social à Montpellier. Agence IA spécialisée automation, SEO IA, chatbots. 1ère agence IA de Montpellier. RDV en 24h. Occitanie."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Villes</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Montpellier</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Montpellier · Siège social</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Agence IA Montpellier<br/>
+        <span class="gradient-text">Siège de Nexus AI</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Montpellier, notre ville d'origine. Nexus AI est née ici en 2020. Nous accompagnons les entreprises montpelliéraines et toute l'Occitanie dans leur transformation IA.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">RDV à Montpellier →</a>
+        <a href="tel:+33467000000" class="btn btn-outline">04 67 00 00 00</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-2">
+        <div class="fade-in">
+          <div class="badge badge-violet mb-3">Siège social</div>
+          <h2 style="margin-bottom:1.5rem;">Notre <span class="gradient-text">maison</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Fondée à Montpellier en 2020, Nexus AI est profondément ancrée dans l'écosystème tech de l'Occitanie. BIC, Cap Omega, Euromédecine — nous collaborons avec tout le tissu entrepreneurial local.</p>
+          <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.9375rem; color:var(--text-muted);">
+            <span>📍 Parc Euromédecine, 34000 Montpellier</span>
+            <span>🚇 Tramway : Malbosc (ligne 3)</span>
+            <span>📞 04 67 00 00 00</span>
+            <span>✉️ contact@nexus-ai.fr</span>
+          </div>
+        </div>
+        <div class="fade-in">
+          <h2 style="margin-bottom:1.5rem;">Montpellier, <span class="gradient-text">tech hub</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Montpellier est la 8ème ville de France et une des plus dynamiques. Son écosystème tech compte 400+ startups, 2 universités et 4 écoles d'ingénieurs. La ville attire des talents du monde entier.</p>
+          <p style="color:var(--text-muted);">L'Occitanie porte une ambition forte sur l'innovation et le numérique. Nexus AI est fière d'en être un acteur clé, accompagnant PME, startups et grands comptes de la région.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Nos services IA <span class="gradient-text">à Montpellier</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { t: 'Automation IA Montpellier', d: "Automatisation de processus pour entreprises de l'Hérault et d'Occitanie. Audit sur site disponible.", href: '/automation-ia-montpellier' },
+          { t: 'SEO IA Montpellier', d: "Référencement local Montpellier et Occitanie. Visibilité sur les recherches géolocalisées de la région.", href: '/seo-ia-paris' },
+          { t: 'Formation IA Occitanie', d: "Sessions intra et inter-entreprises à Montpellier. Formations adaptées aux secteurs locaux : santé, tourisme, tech.", href: '/services/formation-ia' }
+        ].map(s => (
+          <a href={s.href} class="card tilt-card fade-in" style="text-decoration:none; color:inherit;">
+            <h3 style="margin-bottom:0.75rem; color:var(--cyan);">{s.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{s.d}</p>
+            <div style="margin-top:1rem; font-size:0.875rem; font-weight:600; color:var(--cyan);">En savoir plus →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Venez nous voir<br/><span class="gradient-text">à Montpellier</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Nos bureaux sont ouverts du lundi au vendredi. Venez rencontrer l'équipe fondatrice de Nexus AI autour d'un café.</p>
+      <a href="/contact" class="btn btn-primary">Prendre rendez-vous →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

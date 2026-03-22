@@ -1,17 +1,305 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
 
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Nexus AI Platform",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "299",
+    "priceCurrency": "EUR"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce que Nexus AI ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nexus AI est une agence spécialisée en intelligence artificielle et automatisation, aidant les entreprises à multiplier leur ROI grâce à des solutions IA sur mesure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien de temps pour voir des résultats ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nos clients constatent généralement les premiers résultats dès 30 jours. Le ROI moyen observé est de +340% sur 12 mois."
+      }
+    }
+  ]
+};
+
+const services = [
+  {
+    iconClass: 'icon-cyan',
+    title: 'Automation IA',
+    desc: "Automatisez vos processus répétitifs avec des workflows IA intelligents. Gagnez 20h/semaine et réduisez vos erreurs de 95%.",
+    href: '/services/automation-ia'
+  },
+  {
+    iconClass: 'icon-violet',
+    title: 'SEO Intelligence',
+    desc: "L'IA analyse vos mots-clés, optimise votre contenu et prédit les tendances. +180% de trafic organique en 6 mois.",
+    href: '/services/seo-ia'
+  },
+  {
+    iconClass: 'icon-blue',
+    title: 'Développement Web',
+    desc: "Sites et apps ultra-performants avec stack moderne. Performance 98+/100 Lighthouse. Déploiement en continu.",
+    href: '/services/developpement-web'
+  },
+  {
+    iconClass: 'icon-cyan',
+    title: 'Chatbot IA',
+    desc: "Chatbots intelligents disponibles 24/7. Répondez à 80% des questions clients automatiquement. NPS +45 pts.",
+    href: '/services/chatbot'
+  },
+  {
+    iconClass: 'icon-violet',
+    title: 'Analytics IA',
+    desc: "Tableaux de bord prédictifs, détection d'anomalies, forecasting. Décidez avec des données, pas des intuitions.",
+    href: '/services/analytics'
+  },
+  {
+    iconClass: 'icon-blue',
+    title: 'Formation IA',
+    desc: "Formations sur mesure pour vos équipes. Maîtrisez ChatGPT, Midjourney, les LLMs et l'IA générative en 2 jours.",
+    href: '/services/formation-ia'
+  }
+];
+
+const testimonials = [
+  { name: 'Sophie M.', company: 'RetailPro', role: 'Directrice Marketing', stars: 5, text: "Nexus AI a transformé notre acquisition client. +340% de leads qualifiés en 3 mois. L'équipe est réactive et les résultats parlent d'eux-mêmes. Je recommande à 100%." },
+  { name: 'Thomas R.', company: 'InnoTech', role: 'CEO', stars: 5, text: "L'automation de nos workflows nous a fait gagner 25 heures par semaine. ROI x4 en 6 mois. Impressionnant." },
+  { name: 'Laura K.', company: 'EcomBoost', role: 'Head of Growth', stars: 5, text: "Le SEO IA de Nexus AI est une révolution. Notre trafic organique a explosé de 210% en 4 mois. Les positions Google progressent chaque semaine." },
+  { name: 'Marc D.', company: 'ConseilPME', role: 'Directeur Général', stars: 5, text: "Formation IA excellente ! Toute notre équipe est maintenant à l'aise avec l'IA. Productivité en hausse de 60%. Merci Nexus AI !" },
+  { name: 'Isabelle F.', company: 'LuxeStore', role: 'COO', stars: 5, text: "Le chatbot IA gère 78% de nos demandes client 24/7. Nos équipes se concentrent sur les cas complexes. Score satisfaction : 4.8/5." },
+  { name: 'Pierre L.', company: 'AgriSmart', role: 'CTO', stars: 5, text: "Analytics prédictifs de premier plan. On anticipe maintenant nos pics de demande 3 semaines à l'avance. Zéro rupture de stock depuis 8 mois." },
+  { name: 'Amélie B.', company: 'MediaGroup', role: 'Digital Director', stars: 5, text: "Dashboard en temps réel, alertes automatiques, rapports IA. Nous pilotons notre activité avec une précision chirurgicale. Exceptionnel." },
+  { name: 'Nicolas V.', company: 'StartupX', role: 'Fondateur', stars: 5, text: "Jeune startup, budget limité. Le plan Starter de Nexus AI nous a permis de rivaliser avec des boîtes 10x plus grandes. Game changer total." },
+  { name: 'Claire M.', company: 'FinTechPro', role: 'Chief Marketing', stars: 5, text: "Intégration parfaite avec notre stack technique. L'IA de Nexus analyse nos données en temps réel et génère des insights actionnables immédiatement." }
+];
+
+const plans = [
+  {
+    name: 'Starter',
+    priceM: '299',
+    priceA: '239',
+    desc: 'Pour lancer votre transformation IA',
+    features: ['3 automatisations IA', 'SEO IA basique', 'Chatbot 500 conv/mois', 'Analytics standard', 'Support email 5j/7'],
+    cta: 'Démarrer',
+    featured: false
+  },
+  {
+    name: 'Growth',
+    priceM: '799',
+    priceA: '639',
+    desc: "Pour scaler votre business avec l'IA",
+    features: ['Automatisations illimitées', 'SEO IA avancé + contenu', 'Chatbot illimité', 'Analytics prédictifs', 'Formation équipe incluse', 'Support dédié 7j/7', 'Intégrations CRM/ERP'],
+    cta: 'Choisir Growth',
+    featured: true
+  },
+  {
+    name: 'Enterprise',
+    priceM: 'Sur devis',
+    priceA: 'Sur devis',
+    desc: 'Solution IA sur mesure pour grands comptes',
+    features: ['Architecture IA custom', 'LLM privé hébergé', 'Data pipeline dédié', 'SLA 99.99%', 'CSM dédié', 'Audit IA trimestriel', 'Conformité RGPD avancée'],
+    cta: 'Contacter',
+    featured: false
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Nexus AI — Agence IA & Automatisation | Paris, Montpellier"
+  description="Nexus AI multiplie votre ROI grâce à l'intelligence artificielle : automation, SEO IA, chatbots et analytics. +340% ROI moyen. 150+ clients satisfaits."
+  schema={[pageSchema, faqSchema]}
+>
+  <Header slot="header" />
+
+  <!-- HERO -->
+  <Hero />
+
+  <!-- FEATURES -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="dot-grid" style="position:absolute;inset:0;opacity:0.5;"></div>
+    <div class="container z-1">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Nos services</div>
+        <h2>Tout ce dont vous avez besoin<br/><span class="gradient-text">pour dominer votre marché</span></h2>
+        <p style="color:var(--text-muted); max-width:500px; margin:1rem auto 0;">6 expertises complémentaires pilotées par l'IA pour maximiser chaque aspect de votre croissance.</p>
+      </div>
+
+      <div class="grid-3">
+        {services.map((s, idx) => (
+          <div class="card tilt-card fade-in">
+            <div class={`service-icon ${s.iconClass}`} style="font-size:1.5rem;">⚡</div>
+            <h3 style="margin-bottom:0.75rem;">{s.title}</h3>
+            <p style="color:var(--text-muted); margin-bottom:1.25rem; font-size:0.9375rem;">{s.desc}</p>
+            <a href={s.href} style="color:var(--cyan); text-decoration:none; font-size:0.875rem; font-weight:600;">En savoir plus →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '150+', l: 'Clients actifs' },
+          { n: '+340%', l: 'ROI moyen' },
+          { n: '99.9%', l: 'Disponibilité' },
+          { n: '5 ans', l: "D'expertise IA" }
+        ].map(s => (
+          <div class="text-center">
+            <div class="stat-number">{s.n}</div>
+            <div style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9375rem;">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" style="background:var(--surface-dark);" id="pricing">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">Tarifs</div>
+        <h2>Des prix <span class="gradient-text">transparents</span></h2>
+        <p style="color:var(--text-muted); margin-top:0.75rem;">Sans engagement. Sans surprise. Annulez quand vous voulez.</p>
+      </div>
+
+      <div class="pricing-toggle">
+        <span style="color:var(--text-muted); font-size:0.9375rem;">Mensuel</span>
+        <label style="cursor:pointer; display:flex; align-items:center;">
+          <input type="checkbox" id="billing-toggle" />
+          <div class="toggle-switch"></div>
+        </label>
+        <span style="color:var(--text-muted); font-size:0.9375rem;">Annuel</span>
+        <span class="badge badge-cyan" style="font-size:0.75rem; padding:0.25rem 0.625rem;">-20%</span>
+      </div>
+
+      <div class="grid-3" style="align-items:start;">
+        {plans.map(p => (
+          <div class={`card tilt-card fade-in ${p.featured ? 'card-featured' : ''}`} style={p.featured ? 'border:none;' : ''}>
+            {p.featured && <div class="badge badge-cyan mb-3" style="font-size:0.75rem;">POPULAIRE</div>}
+            <h3 style="margin-bottom:0.5rem;">{p.name}</h3>
+            <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:1.5rem;">{p.desc}</p>
+            <div class="price-monthly" style="font-size:2.5rem; font-weight:900; background:var(--grad-aurora); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:0.25rem;">
+              {p.priceM !== 'Sur devis' ? `${p.priceM}€` : p.priceM}
+              {p.priceM !== 'Sur devis' && <span style="-webkit-text-fill-color:var(--text-muted); font-size:1rem; font-weight:400;">/mois</span>}
+            </div>
+            <div class="price-annual" style="font-size:2.5rem; font-weight:900; background:var(--grad-aurora); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:0.25rem; display:none;">
+              {p.priceA !== 'Sur devis' ? `${p.priceA}€` : p.priceA}
+              {p.priceA !== 'Sur devis' && <span style="-webkit-text-fill-color:var(--text-muted); font-size:1rem; font-weight:400;">/mois</span>}
+            </div>
+            <ul style="list-style:none; margin:1.5rem 0; display:flex; flex-direction:column; gap:0.625rem;">
+              {p.features.map(f => (
+                <li style="display:flex; align-items:center; gap:0.625rem; font-size:0.9375rem; color:var(--text-muted);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href={p.name === 'Enterprise' ? '/contact' : '/demo'} class={`btn w-full ${p.featured ? 'btn-primary' : 'btn-outline'}`} style="justify-content:center;">{p.cta}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Témoignages</div>
+        <h2>Ils parlent de nous<br/><span class="gradient-text">avec enthousiasme</span></h2>
+      </div>
+      <div class="masonry">
+        {testimonials.map((t, i) => (
+          <div class="masonry-item card fade-in">
+            <div class="stars mb-2">{'★'.repeat(t.stars)}</div>
+            <p style="color:var(--text-muted); font-size:0.9375rem; line-height:1.7; margin-bottom:1.25rem;">"{t.text}"</p>
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <div style="width:40px; height:40px; border-radius:50%; background:var(--grad-aurora); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1rem; color:#000;">
+                {t.name.charAt(0)}
+              </div>
+              <div>
+                <div style="font-weight:600; font-size:0.875rem;">{t.name}</div>
+                <div style="color:var(--text-muted); font-size:0.8125rem;">{t.role} · {t.company}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container" style="max-width:800px;">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">FAQ</div>
+        <h2>Questions <span class="gradient-text">fréquentes</span></h2>
+      </div>
+      {[
+        { q: "Combien de temps pour voir des résultats ?", a: "Nos clients constatent les premiers résultats dès 30 jours. Le ROI moyen observé est de +340% sur 12 mois d'utilisation de nos solutions IA." },
+        { q: "Faut-il des compétences techniques ?", a: "Non. Nos solutions sont clé en main. Nous gérons l'intégration, la configuration et la maintenance. Votre équipe utilise une interface intuitive." },
+        { q: "Comment fonctionne la formation IA ?", a: "Nos formations se font en présentiel ou en ligne, sur 1 à 2 jours. Elles sont adaptées à votre secteur et à votre niveau. Support post-formation inclus pendant 3 mois." },
+        { q: "Êtes-vous conformes RGPD ?", a: "Oui. Toutes nos solutions sont hébergées en France, conformes RGPD et ISO 27001. Vos données ne quittent jamais le territoire européen." },
+        { q: "Quel est le délai de mise en place ?", a: "Pour un projet standard : 2 à 4 semaines. Pour un déploiement Enterprise complet : 6 à 10 semaines selon la complexité." }
+      ].map(item => (
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            {item.q}
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">{item.a}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section" style="background:linear-gradient(135deg, rgba(0,229,255,0.05), rgba(124,58,237,0.1), rgba(0,102,255,0.05)); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <div class="badge badge-violet mb-4">Prêt à démarrer ?</div>
+      <h2 style="margin-bottom:1rem;">Multipliez votre ROI<br/><span class="gradient-text">dès aujourd'hui</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2.5rem;">Rejoignez 150+ entreprises qui font confiance à Nexus AI pour leur croissance.</p>
+      <div class="flex-center gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">🚀 Lancer mon projet</a>
+        <a href="/demo" class="btn btn-outline">Voir une démo</a>
+      </div>
+      <p style="margin-top:1.5rem; font-size:0.875rem; color:var(--text-muted);">✓ Sans engagement · ✓ Résultats garantis · ✓ Support 24/7</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<script>
+  const toggle = document.getElementById('billing-toggle') as HTMLInputElement | null;
+  const monthly = document.querySelectorAll('.price-monthly');
+  const annual = document.querySelectorAll('.price-annual');
+  if (toggle) {
+    toggle.addEventListener('change', () => {
+      const isAnnual = toggle.checked;
+      monthly.forEach(el => (el as HTMLElement).style.display = isAnnual ? 'none' : 'block');
+      annual.forEach(el => (el as HTMLElement).style.display = isAnnual ? 'block' : 'none');
+    });
+  }
+</script>

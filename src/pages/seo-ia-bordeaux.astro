@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "SEO IA Bordeaux",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "areaServed": { "@type": "City", "name": "Bordeaux" }
+};
+---
+
+<Layout
+  title="SEO IA Bordeaux — Référencement Naturel IA Nouvelle-Aquitaine | Nexus AI"
+  description="Expert SEO IA à Bordeaux et en Nouvelle-Aquitaine. Dominez Google sur vos mots-clés locaux. Audit SEO gratuit. +180% trafic organique en 6 mois."
+  schema={schema}
+>
+  <Header slot="header" />
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a><span class="breadcrumb-sep">/</span>
+        <a href="/villes/bordeaux">Bordeaux</a><span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">SEO IA</span>
+      </nav>
+      <div class="badge badge-violet mb-3">📍 Bordeaux · SEO IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">SEO IA Bordeaux<br/><span class="gradient-text">Dominez localement</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">Positionnez votre entreprise bordelaise en tête des résultats Google. Notre SEO IA s'adapte aux spécificités du marché girondin et occitan.</p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Audit SEO Bordeaux →</a>
+        <a href="/services/seo-ia" class="btn btn-outline">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '+180%', l: 'Trafic organique', d: 'En 6 mois en moyenne' },
+          { n: 'Top 3', l: 'Positions Google', d: 'Sur vos mots-clés Bordeaux' },
+          { n: '48h', l: 'Audit livré', d: 'Rapport complet et actionnable' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Audit SEO Bordeaux<br/><span class="gradient-text">gratuit et sans engagement</span></h2>
+      <a href="/contact" class="btn btn-primary">Demander mon audit →</a>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Layout>

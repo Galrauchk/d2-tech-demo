@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Solutions IA pour E-commerce",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "description": "Solutions IA pour booster les ventes et conversions des boutiques en ligne",
+  "areaServed": "FR"
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Solutions" },
+    { "@type": "ListItem", "position": 3, "name": "E-commerce" }
+  ]
+};
+---
+
+<Layout
+  title="Solutions IA E-commerce — Boostez vos Ventes en Ligne | Nexus AI"
+  description="L'IA au service de votre boutique en ligne. Recommandations produits IA, chatbot shopping, SEO e-commerce, analytics conversion. +35% de CA moyen. Paris, Montpellier."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Solutions</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">E-commerce</span>
+      </nav>
+      <div class="badge badge-violet mb-3">Pour l'E-commerce</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        E-commerce IA<br/>
+        <span class="gradient-text">Vendez plus, automatiquement</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Recommandations personnalisées, chatbot shopping, SEO produit IA, gestion des retours automatisée — votre boutique en ligne sur pilote automatique.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Booster mon e-commerce →</a>
+        <a href="/demo" class="btn btn-outline">Voir une démo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '+35%', l: 'CA moyen', d: 'Grâce aux recommandations IA' },
+          { n: '-65%', l: 'Abandons panier', d: 'Relances automatiques IA' },
+          { n: '+210%', l: 'Trafic SEO', d: 'Fiches produits optimisées IA' },
+          { n: '4.8/5', l: 'Satisfaction', d: 'Grâce au chatbot shopping' }
+        ].map(s => (
+          <div class="card text-center tilt-card fade-in">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.8125rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Solutions e-commerce <span class="gradient-text">IA complètes</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { icon: '🎯', t: 'Recommandations personnalisées', d: "Moteur de recommandation IA qui analyse le comportement de chaque visiteur et propose les produits les plus susceptibles de convertir." },
+          { icon: '💬', t: 'Chatbot shopping assistant', d: "Assistant virtuel qui guide les clients dans leurs achats, répond aux questions produits et assure le SAV 24/7." },
+          { icon: '🔍', t: 'SEO produit IA', d: "Génération et optimisation automatique des fiches produits pour Google. Plus de trafic qualifié, plus de ventes organiques." },
+          { icon: '📧', t: 'Email automation IA', d: "Séquences emails personnalisées : abandon panier, réactivation, cross-sell. Taux d'ouverture +45% avec l'IA." },
+          { icon: '📦', t: 'Gestion stocks prédictive', d: "Prédiction des besoins en stock à 4 semaines. Zéro rupture, zéro surstock. Économies logistiques significatives." },
+          { icon: '💳', t: 'Optimisation conversion', d: "Tests A/B IA, personnalisation du parcours d'achat, optimisation du tunnel de conversion. Taux de conversion +35%." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container text-center">
+      <div class="fade-in mb-6">
+        <h2>Compatible avec <span class="gradient-text">votre plateforme</span></h2>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;" class="fade-in">
+        {['Shopify', 'WooCommerce', 'PrestaShop', 'Magento', 'Wix eCommerce', 'BigCommerce', 'Sylius', 'API custom'].map(t => (
+          <div class="tag">{t}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Votre boutique mérite<br/><span class="gradient-text">de vendre plus</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Audit e-commerce gratuit. Nos experts identifient les 3 leviers IA qui augmenteront votre CA immédiatement.</p>
+      <a href="/contact" class="btn btn-primary">Audit e-commerce gratuit →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

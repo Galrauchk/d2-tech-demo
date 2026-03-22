@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Nexus AI Formation",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "description": "Formations IA sur mesure pour équipes et dirigeants",
+  "areaServed": "FR"
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Services" },
+    { "@type": "ListItem", "position": 3, "name": "Formation IA" }
+  ]
+};
+
+const formations = [
+  {
+    level: 'Initiation',
+    duration: '1 jour',
+    audience: 'Tout public',
+    price: '490€/pers.',
+    topics: ["L'IA en entreprise aujourd'hui", 'ChatGPT et LLMs pratiques', 'Prompting efficace', 'Cas d\'usage métier', 'Enjeux éthiques et RGPD']
+  },
+  {
+    level: 'Avancé',
+    duration: '2 jours',
+    audience: 'Managers & Leads',
+    price: '890€/pers.',
+    topics: ['IA générative avancée', 'Automatisation no-code avec IA', 'Midjourney & génération visuelle', 'Intégration IA dans les workflows', 'Construire sa stratégie IA']
+  },
+  {
+    level: 'Expert',
+    duration: '3 jours',
+    audience: 'Développeurs & DSI',
+    price: 'Sur devis',
+    topics: ['LLMs et fine-tuning', 'API OpenAI, Anthropic, Mistral', 'RAG et vector databases', 'MLOps et déploiement', 'IA on-premise et RGPD']
+  }
+];
+---
+
+<Layout
+  title="Formation IA — Formez vos Équipes à l'Intelligence Artificielle | Nexus AI"
+  description="Formations IA sur mesure pour entreprises. ChatGPT, LLMs, automatisation, IA générative. Présentiel & distanciel. Qualiopi certifié. Paris, Montpellier et toute la France."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Services</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Formation IA</span>
+      </nav>
+      <div class="badge badge-blue mb-3" style="background:rgba(0,102,255,0.1); color:#60a5fa; border:1px solid rgba(0,102,255,0.2);">Formation Certifiée</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Formation IA<br/>
+        <span class="gradient-text">Maîtrisez l'IA en 2 jours</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Des formations pratiques et opérationnelles pour transformer vos équipes en experts de l'IA. Présentiel, distanciel ou sur site — adaptées à votre secteur.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Organiser ma formation →</a>
+        <a href="/demo" class="btn btn-outline">Programme complet</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '500+', l: 'Personnes formées', d: 'Depuis 2020' },
+          { n: '4.9/5', l: 'Satisfaction', d: 'Note moyenne post-formation' },
+          { n: '+60%', l: 'Productivité', d: 'Gain moyen après formation' },
+          { n: '100%', l: 'Pratique', d: 'Exercices sur cas réels' }
+        ].map(s => (
+          <div class="card text-center tilt-card fade-in">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.8125rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Formations -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Programmes</div>
+        <h2>Formations <span class="gradient-text">sur mesure</span></h2>
+      </div>
+      <div class="grid-3">
+        {formations.map((f, i) => (
+          <div class="card tilt-card fade-in">
+            <div class="badge badge-violet mb-3" style="font-size:0.75rem;">{f.level}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <span style="color:var(--text-muted); font-size:0.875rem;">⏱ {f.duration}</span>
+              <span style="color:var(--cyan); font-weight:700;">{f.price}</span>
+            </div>
+            <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:1rem;">Public : {f.audience}</p>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+              {f.topics.map(t => (
+                <li style="display:flex; align-items:center; gap:0.5rem; color:var(--text-muted); font-size:0.875rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" class="btn btn-outline w-full" style="justify-content:center; margin-top:1.5rem;">Demander un devis</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Pourquoi choisir <span class="gradient-text">Nexus AI Formation</span> ?</h2>
+      </div>
+      <div class="grid-2">
+        {[
+          { icon: '🎯', t: 'Formations 100% pratiques', d: "Pas de théorie inutile. Chaque concept est immédiatement appliqué sur des cas concrets de votre secteur. Vous repartez avec des outils opérationnels." },
+          { icon: '🏆', t: 'Formateurs experts terrain', d: "Nos formateurs utilisent quotidiennement les outils IA en production. Ils partagent leur expérience réelle, pas des présentations PowerPoint." },
+          { icon: '🔄', t: 'Suivi post-formation', d: "3 mois d'accompagnement post-formation inclus. Questions, cas d'usage avancés, accès à notre communauté Slack privée." },
+          { icon: '📜', t: 'Certification reconnue', d: "Nos formations sont éligibles aux financements OPCO. Devis pris en charge pour évaluation de financement." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Transformez vos équipes<br/><span class="gradient-text">dès ce mois-ci</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Sessions inter-entreprises chaque mois à Paris et Montpellier. Formation intra-entreprise sur site possible partout en France.</p>
+      <a href="/contact" class="btn btn-primary">Organiser ma formation →</a>
+      <p style="margin-top:1rem; font-size:0.875rem; color:var(--text-muted);">✓ Financement OPCO · ✓ Sur site ou à distance · ✓ Programme personnalisé</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

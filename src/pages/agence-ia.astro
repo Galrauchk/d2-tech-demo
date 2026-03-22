@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Nexus AI — Agence IA France",
+  "description": "Meilleure agence IA française. Automation, SEO IA, chatbots, analytics pour PME et ETI.",
+  "areaServed": "FR",
+  "priceRange": "299-799€/mois"
+};
+---
+
+<Layout
+  title="Agence IA France — Meilleure Agence Intelligence Artificielle | Nexus AI"
+  description="Nexus AI, meilleure agence IA française. Automation, SEO IA, chatbots, analytics. 150+ clients satisfaits, +340% ROI moyen. Paris, Montpellier, Lyon. Devis gratuit."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <div class="badge badge-cyan mb-3">Agence IA n°1 en France</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        L'agence IA qui<br/>
+        <span class="gradient-text">transforme les entreprises</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Nexus AI est l'agence d'intelligence artificielle de référence en France. Nous aidons les PME et ETI à automatiser, optimiser et scaler leur business avec l'IA.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Démarrer mon projet →</a>
+        <a href="/cas-clients" class="btn btn-outline">Voir nos réalisations</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Differentiators -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">Pourquoi Nexus AI</div>
+        <h2>Ce qui nous <span class="gradient-text">différencie</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { icon: '🇫🇷', t: 'Agence 100% française', d: "Fondée à Montpellier, bureaux à Paris. Données hébergées en France. RGPD natif. Équipe francophone disponible en jours ouvrés." },
+          { icon: '⚡', t: 'Résultats rapides', d: "Pas de projets IA qui prennent 18 mois. Nos clients voient les premiers résultats en 30 jours. ROI positif sous 4 mois en moyenne." },
+          { icon: '🔬', t: 'IA propriétaire', d: "Nous n'assemblons pas des outils tiers. Notre plateforme IA est développée en interne. Avantage compétitif et flexibilité maximale." },
+          { icon: '📊', t: 'Mesure ROI systématique', d: "Chaque projet IA démarre avec des KPIs clairs. On mesure, on optimise, on prouve. Pas de projets IA sans indicateurs de succès définis." },
+          { icon: '🎓', t: 'Formation incluse', d: "Vos équipes sont formées à chaque nouvelle fonctionnalité. L'IA n'est utile que si elle est adoptée. Nous garantissons l'adoption." },
+          { icon: '🤝', t: 'Accompagnement continu', d: "Nous ne disparaissons pas après le déploiement. Customer Success Manager dédié, revue mensuelle, optimisations continues." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Nos expertises <span class="gradient-text">IA</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { t: 'Automation IA', d: 'Automatisation de processus, workflows IA, intégrations', href: '/services/automation-ia' },
+          { t: 'SEO Intelligence', d: 'Référencement naturel piloté par l\'IA', href: '/services/seo-ia' },
+          { t: 'Développement Web IA', d: 'Sites et apps ultra-performants avec IA', href: '/services/developpement-web' },
+          { t: 'Chatbot IA', d: 'Service client 24/7 automatisé avec IA', href: '/services/chatbot' },
+          { t: 'Analytics prédictifs', d: 'Dashboards temps réel et forecasting IA', href: '/services/analytics' },
+          { t: 'Formation IA', d: 'Montée en compétences IA pour vos équipes', href: '/services/formation-ia' }
+        ].map(s => (
+          <a href={s.href} class="card tilt-card fade-in" style="text-decoration:none; color:inherit;">
+            <h3 style="margin-bottom:0.5rem; color:var(--cyan);">{s.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{s.d}</p>
+            <div style="margin-top:1rem; font-size:0.875rem; font-weight:600; color:var(--cyan);">En savoir plus →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '150+', l: 'Clients actifs' },
+          { n: '+340%', l: 'ROI moyen' },
+          { n: '5', l: 'Villes en France' },
+          { n: '4.9/5', l: 'Satisfaction' }
+        ].map(s => (
+          <div class="text-center">
+            <div class="stat-number">{s.n}</div>
+            <div style="color:var(--text-muted); margin-top:0.5rem;">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Choisissez la meilleure<br/><span class="gradient-text">agence IA française</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Rejoignez 150+ entreprises qui font confiance à Nexus AI pour leur transformation IA.</p>
+      <a href="/contact" class="btn btn-primary">Démarrer maintenant →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

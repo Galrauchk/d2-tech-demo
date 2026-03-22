@@ -1,0 +1,143 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Chatbot IA",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "description": "Chatbots IA intelligents pour automatiser votre service client 24/7",
+  "areaServed": "FR"
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Services" },
+    { "@type": "ListItem", "position": 3, "name": "Chatbot IA" }
+  ]
+};
+---
+
+<Layout
+  title="Chatbot IA — Service Client 24/7 Automatisé | Nexus AI"
+  description="Déployez un chatbot IA qui répond à 80% des questions clients 24/7. NPS +45 pts, coûts support -60%. Intégration site web, WhatsApp, Messenger. Paris, Montpellier."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Services</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Chatbot IA</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">IA Conversationnelle</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Chatbot IA<br/>
+        <span class="gradient-text">Votre meilleur agent 24/7</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Un chatbot IA qui comprend réellement vos clients, répond avec précision et escalade intelligemment vers vos agents humains quand nécessaire.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Déployer mon chatbot →</a>
+        <a href="/demo" class="btn btn-outline">Voir la démo live</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '80%', l: 'Résolution automatique', d: 'Sans intervention humaine' },
+          { n: '24/7', l: 'Disponibilité', d: '365 jours par an' },
+          { n: '-60%', l: 'Coûts support', d: 'Économies réalisées' },
+          { n: '+45', l: 'Points NPS', d: 'Satisfaction client' }
+        ].map(s => (
+          <div class="card text-center tilt-card fade-in">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.8125rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">Fonctionnalités</div>
+        <h2>Un chatbot qui <span class="gradient-text">comprend vraiment</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { icon: '🧠', t: 'NLP avancé', d: "Compréhension du langage naturel en français, anglais et 20+ langues. Gestion des accents, fautes d'orthographe et expressions familières." },
+          { icon: '📚', t: 'Base de connaissances IA', d: "Alimenté par vos documents, FAQ, fiches produits. Notre IA apprend en continu et s'améliore à chaque conversation." },
+          { icon: '🔄', t: 'Escalade intelligente', d: "Détection automatique des situations complexes. Transfert fluide vers un agent humain avec résumé de conversation fourni." },
+          { icon: '📱', t: 'Multi-canal', d: "Déployez sur votre site web, WhatsApp Business, Facebook Messenger, Telegram et votre application mobile." },
+          { icon: '📈', t: 'Analytics conversations', d: "Tableau de bord complet : taux de résolution, topics fréquents, moments de friction. Améliorez en continu vos scripts." },
+          { icon: '🎨', t: 'Interface personnalisable', d: "Widget chatbot entièrement customisable aux couleurs de votre marque. Expérience utilisateur cohérente et professionnelle." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases by sector -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Adapté à <span class="gradient-text">tous les secteurs</span></h2>
+      </div>
+      <div class="grid-2">
+        {[
+          { sector: 'E-commerce', cases: ['Suivi de commande', 'Retours et remboursements', 'Recommandations produits', 'Questions livraison'] },
+          { sector: 'Services B2B', cases: ["Qualification de leads", 'Prise de rendez-vous', 'Support technique', 'Onboarding clients'] },
+          { sector: 'Santé & Bien-être', cases: ['Prise de RDV', 'Questions fréquentes', 'Préparation consultations', 'Suivi post-soin'] },
+          { sector: 'Finance & Assurance', cases: ['Simulations rapides', 'FAQ produits', 'Sinistres & déclarations', 'Orientation conseillers'] }
+        ].map(item => (
+          <div class="card tilt-card fade-in">
+            <h3 style="margin-bottom:1rem; color:var(--cyan);">{item.sector}</h3>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+              {item.cases.map(c => (
+                <li style="display:flex; align-items:center; gap:0.5rem; color:var(--text-muted); font-size:0.9375rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Votre chatbot IA<br/><span class="gradient-text">prêt en 2 semaines</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Configuration personnalisée, intégration sur votre site et formation incluse. Opérationnel en 14 jours.</p>
+      <a href="/contact" class="btn btn-primary">Déployer mon chatbot →</a>
+      <p style="margin-top:1rem; font-size:0.875rem; color:var(--text-muted);">✓ 30 jours d'essai gratuit · ✓ Support inclus · ✓ Sans engagement initial</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

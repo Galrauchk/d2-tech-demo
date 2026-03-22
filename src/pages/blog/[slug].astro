@@ -1,0 +1,283 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  const posts = [
+    {
+      slug: 'automatisation-ia-2025',
+      title: "Automatisation IA en 2025 : le guide complet pour les entreprises françaises",
+      description: "Comment l'IA révolutionne l'automatisation des processus métier en 2025. Cas d'usage concrets, ROI mesurable et guide d'implémentation pour PME et ETI.",
+      category: 'Automation',
+      date: '15 mars 2025',
+      readTime: '8 min',
+      gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)',
+      content: `L'automatisation des processus métier par l'IA représente la plus grande révolution de productivité depuis l'avènement du web. En 2025, les entreprises qui n'ont pas encore automatisé leurs processus répétitifs prennent un retard considérable face à leurs concurrents.
+
+**Qu'est-ce que l'automatisation IA ?**
+
+L'automatisation IA va bien au-delà de la simple automatisation de tâches répétitives. Elle implique des systèmes capables d'apprendre, de s'adapter et de prendre des décisions contextuelles. Contrairement aux RPA (Robotic Process Automation) classiques, l'automatisation IA gère les exceptions, comprend le langage naturel et améliore ses performances en continu.
+
+**Les processus les plus impactés en 2025**
+
+1. Traitement des emails et communications — L'IA catégorise, priorise et répond automatiquement à 70-80% des emails entrants.
+2. Génération de rapports — Rapports business automatisés chaque semaine sans intervention humaine.
+3. Pipeline commercial — Qualification des leads, relances, suivi CRM entièrement automatisés.
+4. Service client — 80% des demandes résolues sans agent humain.
+
+**ROI moyen constaté**
+
+Nos clients PME observent en moyenne un ROI de x4 sur 12 mois. Le gain de temps moyen est de 20h/semaine par équipe de 5 personnes, permettant de réallouer ces ressources vers des activités à haute valeur ajoutée.
+
+**Comment démarrer ?**
+
+La clé est de commencer petit. Identifiez le processus qui consomme le plus de temps avec le moins de valeur ajoutée. Automatisez-le en premier. Mesurez les résultats. Puis étendez progressivement.
+
+Chez Nexus AI, nous commençons toujours par un audit de 2-3 jours pour cartographier vos processus et identifier les 3 automatisations qui auront le plus d'impact immédiat.`
+    },
+    {
+      slug: 'seo-ia-chatgpt',
+      title: "SEO et IA générative : comment ChatGPT transforme le référencement naturel",
+      description: "L'IA générative change radicalement les règles du SEO. Stratégies d'adaptation pour dominer Google à l'ère de l'IA générative et des résultats Search Generative Experience.",
+      category: 'SEO',
+      date: '8 mars 2025',
+      readTime: '12 min',
+      gradient: 'linear-gradient(135deg, #7c3aed, #0066ff)',
+      content: `Google a fondamentalement changé avec l'introduction de l'IA générative dans ses résultats de recherche. La Search Generative Experience (SGE) et les AI Overviews modifient la façon dont les utilisateurs interagissent avec les résultats de recherche.
+
+**L'impact de l'IA sur le SEO traditionnel**
+
+Les résultats de type "zéro clic" augmentent, mais les positions 1-3 restent ultra-stratégiques pour les requêtes commerciales. La qualité du contenu est plus importante que jamais — Google punit sévèrement le contenu généré en masse sans valeur ajoutée.
+
+**Les nouvelles opportunités SEO créées par l'IA**
+
+L'IA générative crée de nouveaux besoins d'information que les utilisateurs cherchent à vérifier sur des sources fiables. Les marques expertes qui publient du contenu de qualité récoltent des bénéfices enormes.
+
+**Stratégie SEO IA en 2025**
+
+1. E-E-A-T renforcé — Expertise, Expérience, Autorité, Confiance. Mettez en avant vos experts humains.
+2. Contenu long et expert — Articles de 2000+ mots avec données propriétaires, études, retours terrain.
+3. Optimisation pour les featured snippets — Format structuré pour apparaître dans les réponses IA de Google.
+4. SEO sémantique — Couvrez exhaustivement un sujet, pas seulement un mot-clé.
+
+**Chez Nexus AI, notre approche SEO IA**
+
+Nous combinons l'analyse sémantique IA, la génération de contenu assistée et l'optimisation technique pour produire du contenu qui se positionne naturellement sur Google et répond aux critères E-E-A-T.`
+    },
+    {
+      slug: 'chatbot-service-client',
+      title: "Chatbot IA vs service client humain : le guide pour trouver le bon équilibre",
+      description: "Comment combiner chatbot IA et agents humains pour un service client exceptionnel 24/7. Études de cas, métriques de succès et guide d'implémentation.",
+      category: 'Chatbot',
+      date: '1 mars 2025',
+      readTime: '10 min',
+      gradient: 'linear-gradient(135deg, #00e5ff, #7c3aed)',
+      content: `La question n'est plus "chatbot IA ou humain ?" mais "comment les combiner intelligemment ?". Les entreprises qui excellent en service client en 2025 utilisent une approche hybride où l'IA gère le volume et les humains gèrent la complexité et l'émotion.
+
+**Ce que l'IA fait mieux que l'humain**
+
+Disponibilité 24/7/365, gestion simultanée de milliers de conversations, réponse instantanée, cohérence parfaite des informations fournies, analyse de sentiment en temps réel.
+
+**Ce que l'humain fait mieux que l'IA**
+
+Empathie dans les situations émotionnellement chargées, résolution de problèmes inédits et complexes, vente consultative, gestion des clients VIP, négociation.
+
+**Le modèle hybride optimal**
+
+Le meilleur modèle consiste à utiliser le chatbot pour le triage initial (qualification, collecte d'informations, résolution des cas simples) et l'escalade intelligente vers un humain pour les cas complexes, avec transfert du contexte complet.
+
+**Métriques de succès à suivre**
+
+- Taux de résolution automatique (objectif : 70-80%)
+- Taux de satisfaction (CSAT) par canal
+- Temps de résolution moyen
+- Taux d'escalade (objectif : < 25%)
+- NPS global
+
+Nos clients LuxeStore et RetailPro ont atteint 78-80% de résolution automatique avec un CSAT de 4.8/5 en suivant cette approche.`
+    },
+    {
+      slug: 'analytics-predictifs',
+      title: "Analytics prédictifs : comment anticiper les tendances de votre marché avec l'IA",
+      description: "Les modèles prédictifs IA permettent d'anticiper ventes, demande et comportements clients avec 85-95% de précision. Guide pratique pour décideurs.",
+      category: 'Analytics',
+      date: '22 février 2025',
+      readTime: '9 min',
+      gradient: 'linear-gradient(135deg, #0066ff, #7c3aed)',
+      content: `Les analytics prédictifs transforment la prise de décision en entreprise. Plutôt que de réagir aux événements passés, les dirigeants qui utilisent l'IA anticipent les tendances et agissent avant leurs concurrents.
+
+**Comment fonctionnent les modèles prédictifs IA**
+
+Les modèles prédictifs analysent vos données historiques (ventes, trafic, comportements clients) pour identifier des patterns récurrents. Ils intègrent également des données externes (météo, événements, tendances marché) pour affiner leurs prédictions.
+
+**Types de prédictions les plus utiles en entreprise**
+
+Forecasting des ventes (précision 85-95%), prédiction du churn client (identifiez qui va partir avant qu'il parte), prédiction des besoins en stock (zéro rupture, zéro surstock), scoring de leads (priorisez les prospects les plus susceptibles de convertir).
+
+**Cas concret : AgriSmart**
+
+Notre client AgriSmart (distribution agricole) utilise notre plateforme Analytics IA pour prédire ses besoins en stock 3 semaines à l'avance. Résultat : zéro rupture de stock depuis 8 mois, réduction des stocks tampon de 35%, amélioration de la marge brute de 8 points.
+
+**Par où commencer ?**
+
+Commencez par le forecasting des ventes. C'est le cas d'usage le plus universel et le plus rapide à mettre en place. Connectez vos données CRM et ventes, laissez l'IA s'entraîner 2-3 mois sur l'historique, et observez les premières prédictions.`
+    },
+    {
+      slug: 'formation-ia-equipes',
+      title: "Former ses équipes à l'IA : méthodes, outils et retours d'expérience en 2025",
+      description: "Comment construire une culture IA dans votre entreprise. Programme de formation, outils recommandés, indicateurs de succès. Retours de 50+ entreprises formées.",
+      category: 'Formation',
+      date: '15 février 2025',
+      readTime: '11 min',
+      gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)',
+      content: `Former ses équipes à l'IA est devenu un impératif stratégique en 2025. Les entreprises qui investissent dans la montée en compétences IA de leurs collaborateurs observent une hausse de productivité moyenne de 60% et une meilleure adoption des outils IA déployés.
+
+**Pourquoi la formation IA est souvent un échec**
+
+La plupart des formations IA échouent parce qu'elles sont trop théoriques, pas adaptées au contexte métier des participants, ou parce qu'il n'y a pas de suivi post-formation. La clé est l'application immédiate sur des cas réels de l'entreprise.
+
+**Notre approche pédagogique : 70/20/10**
+
+70% de pratique sur des cas réels, 20% d'échanges entre pairs et retours d'expérience, 10% de théorie et concepts. Chaque participant repart avec des workflows IA qu'il peut utiliser dès le lendemain matin.
+
+**Programme type "Formation IA Équipes" (2 jours)**
+
+Jour 1 : Fondamentaux IA, ChatGPT avancé, prompting expert, automatisation no-code.
+Jour 2 : IA générative (texte, image, vidéo), cas d'usage métier sectoriels, construction de son assistant IA personnalisé.
+
+**Indicateurs de succès post-formation**
+
+Mesurez le NPS de formation (objectif > 70), le nombre d'outils IA adoptés 30 jours après (objectif > 3 par personne), le gain de temps hebdomadaire déclaré (objectif > 3h/semaine).
+
+Nos 500+ alumni reportent en moyenne 3h45 de gain par semaine et 4.5 outils IA intégrés dans leur quotidien à 60 jours.`
+    }
+  ];
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title,
+  "description": post.description,
+  "author": { "@type": "Organization", "name": "Nexus AI" },
+  "publisher": { "@type": "Organization", "name": "Nexus AI" },
+  "datePublished": post.date,
+  "image": `https://d2-tech-demo.netlify.app/og-default.jpg`
+};
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://d2-tech-demo.netlify.app/blog" },
+    { "@type": "ListItem", "position": 3, "name": post.title }
+  ]
+};
+---
+
+<Layout
+  title={`${post.title} | Blog Nexus AI`}
+  description={post.description}
+  schema={[articleSchema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content" style="max-width:800px;">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/blog">Blog</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">{post.category}</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">{post.category}</div>
+      <h1 style="font-size:clamp(1.75rem,4vw,3rem); margin-bottom:1.5rem;">{post.title}</h1>
+      <div style="display:flex; align-items:center; gap:1rem; color:var(--text-muted); font-size:0.875rem;">
+        <div style="width:36px; height:36px; border-radius:50%; background:var(--grad-aurora); display:flex; align-items:center; justify-content:center; font-weight:800; color:#000; font-size:0.875rem;">N</div>
+        <span>Équipe Nexus AI</span>
+        <span>·</span>
+        <span>{post.date}</span>
+        <span>·</span>
+        <span>{post.readTime} de lecture</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article image -->
+  <div style={`height:300px; background:${post.gradient}; position:relative;`}>
+    <div style="position:absolute; inset:0; background:rgba(5,8,16,0.3);"></div>
+  </div>
+
+  <!-- Article content -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container" style="max-width:800px;">
+      <div class="fade-in" style="font-size:1.0625rem; line-height:1.85; color:var(--text-muted);">
+        {post.content.split('\n\n').map(paragraph => (
+          <p style="margin-bottom:1.5rem;">{paragraph}</p>
+        ))}
+      </div>
+
+      <!-- Tags -->
+      <div style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border);">
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <span class="tag">{post.category}</span>
+          <span class="tag">Intelligence Artificielle</span>
+          <span class="tag">Nexus AI</span>
+        </div>
+      </div>
+
+      <!-- Author -->
+      <div class="card" style="margin-top:2rem;">
+        <div style="display:flex; align-items:center; gap:1rem;">
+          <div style="width:56px; height:56px; border-radius:50%; background:var(--grad-aurora); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.5rem; color:#000; flex-shrink:0;">N</div>
+          <div>
+            <div style="font-weight:700;">Équipe Nexus AI</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">Experts en Intelligence Artificielle et Automatisation · Paris & Montpellier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related articles -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container" style="max-width:800px;">
+      <h2 style="margin-bottom:2rem;">Articles <span class="gradient-text">similaires</span></h2>
+      <div style="display:flex; gap:1rem; flex-direction:column;">
+        {[
+          { title: "Automatisation IA en 2025 : le guide complet", href: "/blog/automatisation-ia-2025" },
+          { title: "SEO et IA générative : stratégies 2025", href: "/blog/seo-ia-chatgpt" },
+          { title: "Analytics prédictifs : anticiper les tendances", href: "/blog/analytics-predictifs" }
+        ].filter(a => !a.href.includes(post.slug)).slice(0, 2).map(a => (
+          <a href={a.href} class="blog-card" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.5rem;">
+            <div style="width:40px; height:40px; border-radius:0.5rem; background:var(--grad-aurora); flex-shrink:0;"></div>
+            <div style="font-weight:600; font-size:0.9375rem;">{a.title}</div>
+            <div style="margin-left:auto; color:var(--cyan);">→</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--surface-dark); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Passez à l'action<br/><span class="gradient-text">avec Nexus AI</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Nos experts mettent en oeuvre pour vous les stratégies décrites dans cet article. Résultats mesurables sous 30 jours.</p>
+      <a href="/contact" class="btn btn-primary">Démarrer mon projet →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

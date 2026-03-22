@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Solutions IA pour Agences",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "description": "Solutions IA white-label pour agences digitales et agences de communication",
+  "areaServed": "FR"
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Solutions" },
+    { "@type": "ListItem", "position": 3, "name": "Agences" }
+  ]
+};
+---
+
+<Layout
+  title="Solutions IA pour Agences — White-label & Partenariat | Nexus AI"
+  description="Proposez l'IA à vos clients sous votre marque. Programme partenaire Nexus AI pour agences digitales, web et communication. Marges attractives. Formation incluse."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Solutions</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Agences</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">Programme Agences</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Solutions IA<br/>
+        <span class="gradient-text">pour les agences partenaires</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Proposez les meilleures solutions IA à vos clients sous votre propre marque. Programme partenaire avec formation, support et marges attractives.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Devenir partenaire →</a>
+        <a href="/demo" class="btn btn-outline">Programme partenaire</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Value props -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">Programme partenaire</div>
+        <h2>Pourquoi rejoindre <span class="gradient-text">Nexus AI Partner</span> ?</h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { icon: '🏷️', t: 'White-label complet', d: "Proposez toutes nos solutions sous votre marque. Interface personnalisée aux couleurs de votre agence. Vos clients ne voient que vous." },
+          { icon: '💰', t: 'Marges attractives', d: "30 à 40% de marge sur chaque vente. Commissions récurrentes sur abonnements mensuels. Revenus prévisibles pour votre agence." },
+          { icon: '🚀', t: 'Onboarding rapide', d: "Formation complète de 2 jours pour votre équipe. Documentation technique fournie. Opérationnel en 1 semaine." },
+          { icon: '🛠️', t: 'Support technique dédié', d: "Slack dédié avec notre équipe technique. Réponse en moins de 2h en jours ouvrés. SLA garantis pour vos clients." },
+          { icon: '📚', t: 'Ressources marketing', d: "Kit marketing complet : présentations, case studies, vidéos démo. Tout pour convaincre vos prospects facilement." },
+          { icon: '🤝', t: 'Co-marketing possible', d: "Opportunités de co-marketing, webinaires conjoints, partage de leads qualifiés selon le niveau de partenariat." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tiers -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Niveaux de <span class="gradient-text">partenariat</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { level: 'Silver', color: '#94a3b8', ca: "0 – 5k€/mois", margin: '30%', perks: ['Accès plateforme white-label', 'Formation initiale 1 jour', 'Support email', 'Kit marketing de base'] },
+          { level: 'Gold', color: '#f59e0b', ca: "5 – 20k€/mois", margin: '35%', perks: ['Tout Silver +', 'Support Slack dédié', 'Formation 2 jours', 'Co-marketing annuel', 'Badge partenaire Gold'] },
+          { level: 'Platinum', color: '#a78bfa', ca: "20k€+/mois", margin: '40%', perks: ['Tout Gold +', 'Account Manager dédié', 'Partage de leads', 'Co-marketing trimestriel', 'Accès beta features', 'SLA premium'] }
+        ].map(tier => (
+          <div class="card tilt-card fade-in">
+            <div style={`font-size:1.25rem; font-weight:900; color:${tier.color}; margin-bottom:0.5rem;`}>{tier.level}</div>
+            <div style="font-size:0.875rem; color:var(--text-muted); margin-bottom:1rem;">CA mensuel : {tier.ca}</div>
+            <div style="font-size:2rem; font-weight:900; color:var(--cyan); margin-bottom:1.5rem;">{tier.margin} <span style="font-size:0.875rem; color:var(--text-muted);">de marge</span></div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+              {tier.perks.map(p => (
+                <li style="display:flex; align-items:center; gap:0.5rem; color:var(--text-muted); font-size:0.875rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" class="btn btn-outline w-full" style="justify-content:center; margin-top:1.5rem;">Rejoindre</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Rejoignez notre réseau<br/><span class="gradient-text">de 30+ agences partenaires</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Appel découverte de 30 minutes pour évaluer votre potentiel et définir le niveau de partenariat adapté.</p>
+      <a href="/contact" class="btn btn-primary">Demander un appel découverte →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Nexus AI Lyon",
+  "description": "Agence IA et automatisation à Lyon — Intelligence artificielle pour entreprises lyonnaises",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lyon",
+    "postalCode": "69002",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33472000000",
+  "areaServed": { "@type": "City", "name": "Lyon" }
+};
+---
+
+<Layout
+  title="Agence IA Lyon — Automation & Intelligence Artificielle | Nexus AI"
+  description="Nexus AI à Lyon. Solutions IA pour entreprises lyonnaises : automation, SEO IA, chatbots, analytics. Interventions dans toute l'Auvergne-Rhône-Alpes. RDV en 24h."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Villes</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Lyon</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Lyon</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Agence IA à Lyon<br/>
+        <span class="gradient-text">Auvergne-Rhône-Alpes</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Lyon, 2ème métropole économique de France. Nexus AI accompagne les entreprises lyonnaises dans leur transformation IA, de la Presqu'île à la Part-Dieu.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">RDV à Lyon →</a>
+        <a href="/services/automation-ia" class="btn btn-outline">Nos services</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3">
+        {[
+          { icon: '🏭', t: "Industrie lyonnaise", d: "Lyon compte 12 000 entreprises industrielles. L'automation IA transforme la production, la logistique et la qualité." },
+          { icon: '💊', t: "Santé & Biotech", d: "Lyon est le 2ème pôle santé d'Europe. Nos solutions IA s'adaptent aux contraintes réglementaires du secteur." },
+          { icon: '🛒', t: "Commerce & Retail", d: "Des Halles de Lyon au retail physique, l'IA optimise l'expérience client et la gestion des stocks." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in" style="align-items:center;">
+        <div>
+          <h2 style="margin-bottom:1.5rem;">Lyon, capitale <span class="gradient-text">économique</span> du Sud-Est</h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Avec 700 000 habitants et une économie diversifiée (industrie, santé, numérique, tourisme), Lyon représente un marché majeur pour les solutions IA.</p>
+          <p style="color:var(--text-muted);">Nexus AI intervient régulièrement à Lyon et dans toute la région Auvergne-Rhône-Alpes. Nos consultants se déplacent sur site pour les phases d'audit et d'accompagnement.</p>
+          <a href="/contact" class="btn btn-primary" style="margin-top:1.5rem;">Démarrer à Lyon →</a>
+        </div>
+        <div>
+          <div class="card">
+            <div style="font-size:0.875rem; color:var(--text-muted); margin-bottom:1.5rem;">Clients Nexus AI en Auvergne-Rhône-Alpes</div>
+            {[
+              { metric: '25+', label: 'Entreprises lyonnaises accompagnées' },
+              { metric: '+280%', label: 'ROI moyen sur la région' },
+              { metric: '2-4 sem.', label: 'Délai de déploiement' }
+            ].map(s => (
+              <div style="display:flex; justify-content:space-between; padding:0.75rem 0; border-bottom:1px solid var(--border);">
+                <span style="color:var(--text-muted);">{s.label}</span>
+                <span style="font-weight:700; color:var(--cyan);">{s.metric}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Votre projet IA<br/><span class="gradient-text">à Lyon</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Consultez nos experts par téléphone ou organisez un premier rendez-vous sur site à Lyon.</p>
+      <a href="/contact" class="btn btn-primary">Prendre rendez-vous →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

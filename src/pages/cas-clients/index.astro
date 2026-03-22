@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Cas clients Nexus AI",
+  "description": "Études de cas et résultats concrets obtenus par nos clients",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "RetailPro — +340% ROI" },
+    { "@type": "ListItem", "position": 2, "name": "InnoTech — Automation workflows" },
+    { "@type": "ListItem", "position": 3, "name": "EcomBoost — SEO +210%" }
+  ]
+};
+
+const cases = [
+  {
+    slug: 'retailpro-340-roi',
+    company: 'RetailPro',
+    sector: 'Distribution retail',
+    service: 'Automation IA + Analytics',
+    result: '+340% ROI',
+    resultLabel: 'en 12 mois',
+    gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)',
+    desc: "RetailPro a automatisé ses processus de reporting, relances clients et gestion des stocks grâce à Nexus AI. Résultat : +340% ROI et 25h économisées par semaine."
+  },
+  {
+    slug: 'innotech-automation',
+    company: 'InnoTech',
+    sector: 'Technologie B2B',
+    service: 'Automation IA',
+    result: '25h/sem.',
+    resultLabel: 'économisées',
+    gradient: 'linear-gradient(135deg, #7c3aed, #0066ff)',
+    desc: "InnoTech a automatisé son pipeline commercial, la qualification des leads et les relances. Le CEO peut désormais se concentrer sur la stratégie plutôt que les opérations."
+  },
+  {
+    slug: 'ecomboost-seo',
+    company: 'EcomBoost',
+    sector: 'E-commerce mode',
+    service: 'SEO IA',
+    result: '+210%',
+    resultLabel: 'de trafic organique',
+    gradient: 'linear-gradient(135deg, #00e5ff, #7c3aed)',
+    desc: "EcomBoost voulait réduire sa dépendance aux publicités payantes. Notre SEO IA a généré +210% de trafic organique en 4 mois, réduisant le coût d'acquisition de 55%."
+  },
+  {
+    slug: 'conseilpme-formation',
+    company: 'ConseilPME',
+    sector: 'Conseil & Services',
+    service: 'Formation IA',
+    result: '+60%',
+    resultLabel: 'de productivité',
+    gradient: 'linear-gradient(135deg, #0066ff, #7c3aed)',
+    desc: "14 consultants formés à l'IA en 2 jours. Gain de productivité de 60% sur la création de propositions commerciales, rapports et analyses. NPS formation : 92/100."
+  },
+  {
+    slug: 'luxestore-chatbot',
+    company: 'LuxeStore',
+    sector: 'Retail luxe',
+    service: 'Chatbot IA',
+    result: '78%',
+    resultLabel: 'questions résolues auto.',
+    gradient: 'linear-gradient(135deg, #00e5ff, #0066ff)',
+    desc: "LuxeStore a déployé un chatbot IA sur son site et WhatsApp. 78% des questions sont résolues sans agent humain. Satisfaction client 4.8/5. Coûts support -60%."
+  }
+];
+---
+
+<Layout
+  title="Cas Clients Nexus AI — Résultats Concrets & Études de Cas"
+  description="Découvrez comment nos clients ont transformé leur business avec l'IA. +340% ROI, +210% trafic SEO, 25h/semaine économisées. Cas d'usage réels et mesurables."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content text-center">
+      <div class="badge badge-cyan mb-4">Cas clients</div>
+      <h1 style="margin-bottom:1rem;">Des résultats <span class="gradient-text">réels et mesurables</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:540px; margin:0 auto;">150+ entreprises font confiance à Nexus AI. Découvrez leurs transformations.</p>
+    </div>
+  </div>
+
+  <!-- Stats globaux -->
+  <section class="section-sm" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '150+', l: 'Clients accompagnés' },
+          { n: '+340%', l: 'ROI moyen constaté' },
+          { n: '4.9/5', l: 'Note de satisfaction' },
+          { n: '87%', l: 'Renouvellent chaque an' }
+        ].map(s => (
+          <div class="text-center">
+            <div class="stat-number">{s.n}</div>
+            <div style="color:var(--text-muted); margin-top:0.5rem;">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-3">
+        {cases.map((c, i) => (
+          <a href={`/cas-clients/${c.slug}`} style="text-decoration:none; color:inherit;" class="fade-in">
+            <div class="card tilt-card" style="height:100%;">
+              <div style={`height:120px; background:${c.gradient}; border-radius:1rem; margin:-2rem -2rem 1.5rem; display:flex; align-items:flex-end; padding:1rem;`}>
+                <span class="badge badge-cyan" style="font-size:0.75rem;">{c.service}</span>
+              </div>
+              <div style="font-size:0.8125rem; color:var(--text-muted); margin-bottom:0.25rem;">{c.sector}</div>
+              <h3 style="margin-bottom:0.75rem;">{c.company}</h3>
+              <p style="color:var(--text-muted); font-size:0.9375rem; line-height:1.6; margin-bottom:1.5rem;">{c.desc}</p>
+              <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border);">
+                <div style="font-size:2rem; font-weight:900; background:var(--grad-aurora); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1;">{c.result}</div>
+                <div style="font-size:0.8125rem; color:var(--text-muted);">{c.resultLabel}</div>
+              </div>
+              <div style="margin-top:1rem; color:var(--cyan); font-size:0.875rem; font-weight:600;">Lire l'étude de cas →</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--surface-dark); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Vous aussi, faites partie<br/><span class="gradient-text">de nos success stories</span></h2>
+      <a href="/contact" class="btn btn-primary" style="margin-top:1rem;">Démarrer mon projet →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

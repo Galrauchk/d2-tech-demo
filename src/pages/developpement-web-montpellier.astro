@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Développement Web Montpellier — Sites & Apps IA | Nexus AI"
+  description="Agence développement web à Montpellier. Sites Astro, Next.js, React avec IA intégrée. Performance garantie. Équipe locale Montpellier. Devis gratuit en 24h."
+>
+  <Header slot="header" />
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a><span class="breadcrumb-sep">/</span>
+        <a href="/villes/montpellier">Montpellier</a><span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Développement Web</span>
+      </nav>
+      <div class="badge badge-blue mb-3" style="background:rgba(0,102,255,0.1); color:#60a5fa; border:1px solid rgba(0,102,255,0.2);">📍 Montpellier · Dev Web</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">Développement Web Montpellier<br/><span class="gradient-text">Depuis notre siège</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">Notre équipe de développeurs montpelliérains crée des sites web et applications IA ultra-performants. Réunions sur site, suivi personnalisé, technologie de pointe.</p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Devis gratuit Montpellier →</a>
+        <a href="/services/developpement-web" class="btn btn-outline">Nos services</a>
+      </div>
+    </div>
+  </div>
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '98+', l: 'Score Lighthouse', d: 'Performance garantie' },
+          { n: '< 1s', l: 'Chargement', d: 'Time to First Byte' },
+          { n: '24h', l: 'Devis livré', d: 'Réponse rapide garantie' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Votre projet web<br/><span class="gradient-text">à Montpellier</span></h2>
+      <a href="/contact" class="btn btn-primary">Obtenir mon devis →</a>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Layout>

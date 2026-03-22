@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Démo Nexus AI",
+  "description": "Démonstration gratuite de la plateforme Nexus AI",
+  "organizer": { "@type": "Organization", "name": "Nexus AI" }
+};
+---
+
+<Layout
+  title="Démo Gratuite Nexus AI — Voyez l'IA en Action | Nexus AI"
+  description="Réservez votre démo gratuite Nexus AI. 30 minutes pour voir l'automation IA, SEO IA, chatbot et analytics en action. Adapté à votre secteur. Sans engagement."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content text-center">
+      <div class="badge badge-cyan mb-4">Démo gratuite</div>
+      <h1 style="margin-bottom:1rem;">Voyez l'IA <span class="gradient-text">en action</span></h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:540px; margin:0 auto 2rem;">30 minutes de démo personnalisée. Nos experts vous montrent exactement comment Nexus AI s'applique à votre secteur et vos processus.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-2" style="gap:4rem; align-items:start;">
+        <div class="fade-in">
+          <h2 style="margin-bottom:2rem;">Réservez votre <span class="gradient-text">démo</span></h2>
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label class="form-label">Votre nom *</label>
+              <input type="text" name="name" class="form-input" placeholder="Jean Dupont" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input type="email" name="email" class="form-input" placeholder="jean@entreprise.fr" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Téléphone *</label>
+              <input type="tel" name="phone" class="form-input" placeholder="06 00 00 00 00" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Secteur d'activité</label>
+              <select name="sector" class="form-input">
+                <option value="">Choisissez votre secteur</option>
+                <option>Commerce & Retail</option>
+                <option>Services B2B</option>
+                <option>Finance & Assurance</option>
+                <option>E-commerce</option>
+                <option>Santé</option>
+                <option>Industrie</option>
+                <option>Tourisme & Hôtellerie</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ce qui vous intéresse le plus</label>
+              <select name="product" class="form-input">
+                <option>Automation IA</option>
+                <option>SEO Intelligence</option>
+                <option>Chatbot IA</option>
+                <option>Analytics prédictifs</option>
+                <option>Développement Web IA</option>
+                <option>Tout découvrir</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-full" style="justify-content:center;">
+              Réserver ma démo →
+            </button>
+          </form>
+        </div>
+
+        <div class="fade-in">
+          <h2 style="margin-bottom:2rem;">Au programme <span class="gradient-text">de votre démo</span></h2>
+          {[
+            { n: '1', t: 'Présentation personnalisée', d: "Nous analysons votre site et vos processus avant la démo pour vous montrer des exemples concrets adaptés à votre business." },
+            { n: '2', t: 'Démo live des fonctionnalités', d: "Automation, SEO IA, chatbot, analytics — vous voyez la plateforme en temps réel, sur vos propres données si disponibles." },
+            { n: '3', t: "Estimation de ROI", d: "Nos experts calculent avec vous le ROI potentiel basé sur votre CA, vos équipes et vos objectifs. Chiffres concrets garantis." },
+            { n: '4', t: 'Q&A et prochaines étapes', d: "Toutes vos questions. Si ça matche, on vous propose un plan d'action détaillé avec délais et pricing." }
+          ].map(step => (
+            <div style="display:flex; gap:1.25rem; margin-bottom:1.5rem;">
+              <div class="step-number" style="width:36px; height:36px; font-size:1rem; flex-shrink:0;">{step.n}</div>
+              <div>
+                <h3 style="font-size:1.0625rem; margin-bottom:0.375rem;">{step.t}</h3>
+                <p style="color:var(--text-muted); font-size:0.9375rem;">{step.d}</p>
+              </div>
+            </div>
+          ))}
+
+          <div class="card" style="background:rgba(0,229,255,0.04); border-color:rgba(0,229,255,0.2); margin-top:2rem;">
+            <div style="font-weight:600; margin-bottom:0.75rem;">Ce que vous obtenez</div>
+            {["Démo 100% personnalisée à votre secteur", "Rapport ROI estimatif offert", "Plan d'action IA sur 3 mois", "Accès essai 14 jours après la démo"].map(p => (
+              <div style="display:flex; align-items:center; gap:0.625rem; padding:0.5rem 0; border-bottom:1px solid var(--border); color:var(--text-muted); font-size:0.875rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {p}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

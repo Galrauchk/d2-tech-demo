@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Nexus AI Toulouse",
+  "description": "Agence IA et automatisation à Toulouse — Solutions IA pour la ville rose",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Toulouse",
+    "postalCode": "31000",
+    "addressCountry": "FR"
+  },
+  "areaServed": { "@type": "City", "name": "Toulouse" }
+};
+---
+
+<Layout
+  title="Agence IA Toulouse — Automation & Intelligence Artificielle | Nexus AI"
+  description="Nexus AI à Toulouse. Solutions IA pour entreprises toulousaines et occitanes : automation, SEO IA, chatbots, analytics. Aerospace Valley. Contactez-nous."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Villes</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Toulouse</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Toulouse · La Ville Rose</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Agence IA à Toulouse<br/>
+        <span class="gradient-text">Capitale de l'Aérospatial</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Toulouse, 4ème ville de France et capitale mondiale de l'aéronautique. Nexus AI accompagne les entreprises toulousaines dans leur révolution IA.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">RDV à Toulouse →</a>
+        <a href="/services/automation-ia" class="btn btn-outline">Nos services</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3">
+        {[
+          { icon: '🚀', t: 'Aéronautique & Espace', d: "Airbus, Thales, Safran — Toulouse est le coeur de l'aéronautique mondiale. L'IA révolutionne maintenance prédictive et supply chain." },
+          { icon: '🎓', t: 'Recherche & Formation', d: "Toulouse compte 130 000 étudiants. INP Toulouse, UT1, Paul Sabatier — un vivier de talents tech et IA exceptionnel." },
+          { icon: '💻', t: 'Tech & Startups', d: "La scène startup toulousaine est l'une des plus dynamiques de France. Digital Campus, Hub Innovation — l'IA y est omniprésente." }
+        ].map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>L'IA à Toulouse : <span class="gradient-text">nos solutions</span></h2>
+      </div>
+      <div class="grid-2">
+        {[
+          { t: 'Automation pour sous-traitants aéro', d: "Automation des processus de documentation, conformité, traçabilité pour les fournisseurs de rang 1 et 2 de l'aéronautique toulousaine." },
+          { t: 'SEO IA pour PME toulousaines', d: "Visibilité Google sur le marché toulousain. Référencement local adapté aux secteurs porteurs de Toulouse Métropole." },
+          { t: 'Chatbot pour secteur services', d: "Solutions chatbot pour entreprises de services BtoB et BtoC. Prise de RDV, support client, qualification leads." },
+          { t: 'Formation IA à Toulouse', d: "Sessions de formation IA à Toulouse chaque mois. Adaptées aux spécificités du tissu économique local." }
+        ].map(s => (
+          <div class="card tilt-card fade-in">
+            <h3 style="margin-bottom:0.75rem; color:var(--cyan);">{s.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{s.d}</p>
+            <a href="/contact" style="display:inline-block; margin-top:1rem; color:var(--cyan); text-decoration:none; font-size:0.875rem; font-weight:600;">En savoir plus →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">L'IA toulousaine<br/><span class="gradient-text">à votre service</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Rencontrons-nous à Toulouse pour discuter de votre projet de transformation IA.</p>
+      <a href="/contact" class="btn btn-primary">Prendre rendez-vous →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

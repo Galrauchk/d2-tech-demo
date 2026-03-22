@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "SEO Intelligence IA",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "description": "Optimisation SEO pilotée par l'intelligence artificielle pour dominer Google",
+  "areaServed": "FR"
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Services" },
+    { "@type": "ListItem", "position": 3, "name": "SEO IA" }
+  ]
+};
+
+const features = [
+  { icon: '🔍', t: 'Analyse sémantique IA', d: "Notre IA analyse des millions de requêtes pour identifier les opportunités de mots-clés à fort potentiel que vos concurrents n'exploitent pas encore." },
+  { icon: '✍️', t: 'Contenu optimisé IA', d: "Génération et optimisation de contenu SEO à grande échelle. Articles, fiches produits, pages de service — tous optimisés pour Google et les utilisateurs." },
+  { icon: '🔗', t: 'Netlinking prédictif', d: "Stratégie de liens entrants basée sur l'IA. Identification des opportunités de backlinks de qualité et gestion automatisée des campagnes de link building." },
+  { icon: '📊', t: 'Reporting en temps réel', d: "Dashboard SEO en temps réel avec indicateurs clés : positions, trafic, impressions, CTR. Alertes automatiques en cas d'anomalie détectée par l'IA." },
+  { icon: '⚡', t: 'Core Web Vitals', d: "Audit technique automatisé et recommandations priorisées pour optimiser LCP, FID et CLS. Performance garantie 90+ sur Google PageSpeed." },
+  { icon: '🌍', t: 'SEO Local IA', d: "Optimisation Google Business Profile, gestion des avis, cohérence NAP automatisée. Dominez les résultats locaux dans vos villes cibles." }
+];
+---
+
+<Layout
+  title="SEO Intelligence IA — Dominez Google avec l'IA | Nexus AI"
+  description="Boostez votre référencement naturel avec notre SEO IA. Analyse sémantique, contenu optimisé IA, netlinking prédictif. +180% de trafic organique en 6 mois. Paris, Montpellier."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Services</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">SEO Intelligence IA</span>
+      </nav>
+      <div class="badge badge-violet mb-3">SEO Premium</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        SEO Intelligence<br/>
+        <span class="gradient-text">Dominez Google avec l'IA</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Notre plateforme IA analyse votre écosystème SEO en profondeur, génère du contenu optimisé et prédit les tendances de recherche avant vos concurrents.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Audit SEO gratuit →</a>
+        <a href="/demo" class="btn btn-outline">Voir la démo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-4 fade-in">
+        {[
+          { n: '+180%', l: 'Trafic organique', d: 'En 6 mois' },
+          { n: 'Top 3', l: 'Positions Google', d: 'Sur mots-clés cibles' },
+          { n: '2x', l: 'Taux de conversion', d: 'Depuis le SEO' },
+          { n: '6 mois', l: 'ROI SEO', d: 'Retour positif garanti' }
+        ].map(s => (
+          <div class="card text-center tilt-card fade-in">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.8125rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Fonctionnalités</div>
+        <h2>Le SEO réinventé<br/><span class="gradient-text">par l'intelligence artificielle</span></h2>
+      </div>
+      <div class="grid-3">
+        {features.map(f => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{f.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{f.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container" style="max-width:800px;">
+      <div class="text-center mb-6 fade-in">
+        <h2>Notre approche <span class="gradient-text">SEO IA</span></h2>
+      </div>
+      {[
+        { n: '01', t: 'Audit SEO complet IA', d: "Analyse technique, sémantique et concurrentielle de votre site en 48h. Identification des 20% d'actions qui génèrent 80% des résultats." },
+        { n: '02', t: 'Stratégie de contenu IA', d: "Création d'un calendrier éditorial basé sur les données. Notre IA génère des briefs de contenu ultra-optimisés pour chaque page cible." },
+        { n: '03', t: 'Optimisation technique', d: "Correction des erreurs techniques, optimisation des balises, amélioration des Core Web Vitals. Site parfaitement crawlable par Google." },
+        { n: '04', t: 'Netlinking & autorité', d: "Campagnes de link building qualitatives avec partenaires vérifiés. Augmentation de votre autorité de domaine de façon naturelle et durable." },
+        { n: '05', t: 'Suivi & optimisation continue', d: "Reporting mensuel détaillé, ajustements stratégiques basés sur les données IA. Amélioration continue des performances SEO." }
+      ].map((step, i) => (
+        <div class="fade-in" style="display:flex; gap:1.5rem; margin-bottom:2rem; align-items:flex-start;">
+          <div class="step-number">{step.n}</div>
+          <div>
+            <h3 style="margin-bottom:0.5rem;">{step.t}</h3>
+            <p style="color:var(--text-muted);">{step.d}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <div class="badge badge-violet mb-4">Audit offert</div>
+      <h2 style="margin-bottom:1rem;">Obtenez votre audit SEO<br/><span class="gradient-text">gratuit en 48h</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Nos experts IA analysent votre site et vous livrent un rapport complet avec les actions prioritaires pour progresser sur Google.</p>
+      <a href="/contact" class="btn btn-primary">Demander mon audit gratuit →</a>
+      <p style="margin-top:1rem; font-size:0.875rem; color:var(--text-muted);">✓ 100% gratuit · ✓ Sans engagement · ✓ Livré en 48h</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

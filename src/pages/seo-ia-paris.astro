@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "SEO IA Paris",
+  "provider": { "@type": "Organization", "name": "Nexus AI" },
+  "areaServed": { "@type": "City", "name": "Paris" }
+};
+---
+
+<Layout
+  title="SEO IA Paris — Référencement Naturel IA en Île-de-France | Nexus AI"
+  description="Expert SEO IA à Paris. Dominez Google sur vos mots-clés parisiens. Audit SEO gratuit, stratégie IA, contenu optimisé. +180% trafic organique. Paris et Île-de-France."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/villes/paris">Paris</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">SEO IA</span>
+      </nav>
+      <div class="badge badge-violet mb-3">📍 Paris · SEO IA</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        SEO IA à Paris<br/>
+        <span class="gradient-text">Dominez Google en Île-de-France</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Le marché parisien est ultra-concurrentiel. Notre SEO IA vous donne l'avantage technique et éditorial pour surpasser vos concurrents sur Google, quel que soit votre secteur.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Audit SEO Paris gratuit →</a>
+        <a href="/services/seo-ia" class="btn btn-outline">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { n: '+180%', l: 'Trafic organique', d: 'Résultats moyens en 6 mois' },
+          { n: 'Top 3', l: 'Positions Google', d: 'Sur vos mots-clés cibles' },
+          { n: '-48%', l: "Coût d'acquisition", d: 'Grâce au SEO organique' }
+        ].map(s => (
+          <div class="card text-center tilt-card">
+            <div class="stat-number">{s.n}</div>
+            <div style="font-weight:700; margin:0.5rem 0 0.25rem;">{s.l}</div>
+            <div style="color:var(--text-muted); font-size:0.875rem;">{s.d}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <h2 style="margin-bottom:1.5rem;">SEO IA <span class="gradient-text">spécifique Paris</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Le SEO à Paris nécessite une approche particulière. La concurrence est 3-5x plus intense que dans les villes moyennes. Il faut une stratégie affinée, du contenu expert et une technique irréprochable.</p>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Notre IA analyse en permanence les SERP parisiens, identifie les opportunités cachées et génère du contenu optimisé pour les requêtes locales.</p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem;">
+            {["SEO local Paris (requêtes géolocalisées)", "Google Business Profile optimisé", "Contenu expert adapté au marché parisien", "Netlinking avec sites partenaires locaux"].map(p => (
+              <li style="display:flex; align-items:center; gap:0.625rem; color:var(--text-muted);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="card tilt-card">
+          <h3 style="margin-bottom:1rem; color:var(--cyan);">Secteurs SEO Paris</h3>
+          <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:1rem;">Nous avons optimisé le SEO d'entreprises parisiennes dans :</p>
+          {['Finance & Fintech', 'Consulting & Services B2B', 'Mode & Luxe', 'Restauration & Tourisme', 'Immobilier', 'Santé & Bien-être', 'E-commerce', 'Tech & Startups'].map(s => (
+            <div style="display:flex; align-items:center; gap:0.625rem; padding:0.5rem 0; border-bottom:1px solid var(--border); color:var(--text-muted); font-size:0.875rem;">
+              <span style="color:var(--cyan);">→</span>{s}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Audit SEO Paris<br/><span class="gradient-text">gratuit en 48h</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Nos experts analysent votre site et vous livrent un rapport SEO complet avec les actions prioritaires pour progresser sur Google Paris.</p>
+      <a href="/contact" class="btn btn-primary">Demander mon audit gratuit →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

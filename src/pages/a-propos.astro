@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "À propos de Nexus AI",
+  "description": "L'histoire, la mission et les valeurs de Nexus AI, agence IA française",
+  "publisher": { "@type": "Organization", "name": "Nexus AI" }
+};
+
+const values = [
+  { icon: '🎯', t: 'Impact avant tout', d: "Chaque décision est guidée par l'impact concret sur votre business. Pas de projets IA pour faire joli — uniquement des solutions qui génèrent un ROI mesurable." },
+  { icon: '🔬', t: 'Excellence technique', d: "Nous utilisons les technologies IA les plus avancées et maintenons notre expertise à la pointe. Formation continue, veille permanente, R&D actif." },
+  { icon: '🤝', t: 'Partenariat long terme', d: "87% de nos clients renouvellent chaque année. Nous construisons des relations durables, pas des projets one-shot. Votre succès est notre succès." },
+  { icon: '🔒', t: 'Éthique & RGPD', d: "IA responsable, données hébergées en France, conformité RGPD stricte. Nous refusons les projets contraires à nos valeurs éthiques." }
+];
+
+const timeline = [
+  { year: '2020', event: "Fondation de Nexus AI à Montpellier par 3 ingénieurs IA" },
+  { year: '2021', event: "Premiers clients PME. Lancement du produit Automation IA" },
+  { year: '2022', event: "Ouverture des bureaux parisiens. 30 clients actifs" },
+  { year: '2023', event: "Lancement du module SEO IA et Chatbot. 70 clients" },
+  { year: '2024', event: "Levée de fonds seed. 100 clients actifs. 15 collaborateurs" },
+  { year: '2025', event: "150+ clients. Expansion Lyon, Bordeaux, Toulouse. 25 collaborateurs" }
+];
+---
+
+<Layout
+  title="À propos de Nexus AI — Notre Histoire, Mission & Valeurs"
+  description="Découvrez l'histoire de Nexus AI, agence IA française fondée à Montpellier en 2020. Notre mission : rendre l'IA accessible et impactante pour toutes les entreprises."
+  schema={schema}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">À propos</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">Notre histoire</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Nexus AI<br/>
+        <span class="gradient-text">Born in Montpellier, 2020</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:600px;">
+        Trois ingénieurs IA partageaient un constat : l'intelligence artificielle promettait de révolutionner les entreprises, mais restait inaccessible aux PME et ETI françaises. Nexus AI est née de cette conviction.
+      </p>
+    </div>
+  </div>
+
+  <!-- Mission -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <div class="badge badge-violet mb-3">Notre mission</div>
+          <h2 style="margin-bottom:1.5rem;">Rendre l'IA <span class="gradient-text">accessible & impactante</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem; font-size:1.0625rem; line-height:1.8;">L'IA ne doit pas être réservée aux GAFAM et aux grandes entreprises dotées d'équipes data science de 50 personnes. Notre mission est de démocratiser l'accès à des solutions IA de haute qualité.</p>
+          <p style="color:var(--text-muted); font-size:1.0625rem; line-height:1.8;">Chaque PME française doit pouvoir bénéficier de la même technologie qu'Amazon, Netflix ou Spotify — à un prix et dans un format adaptés à sa réalité.</p>
+        </div>
+        <div class="card tilt-card fade-in">
+          <h3 style="margin-bottom:1.5rem; color:var(--cyan);">Nexus AI en chiffres</h3>
+          {[
+            { metric: '2020', label: 'Fondée à Montpellier' },
+            { metric: '150+', label: 'Clients actifs' },
+            { metric: '25', label: 'Collaborateurs passionnés' },
+            { metric: '5', label: 'Villes (Paris, Mtp, Lyon, Bx, Tls)' },
+            { metric: '+340%', label: 'ROI moyen nos clients' },
+            { metric: '4.9/5', label: 'Note de satisfaction' }
+          ].map(s => (
+            <div style="display:flex; justify-content:space-between; padding:0.75rem 0; border-bottom:1px solid var(--border);">
+              <span style="color:var(--text-muted);">{s.label}</span>
+              <span style="font-weight:700; color:var(--cyan);">{s.metric}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-cyan mb-3">Nos valeurs</div>
+        <h2>Ce qui nous <span class="gradient-text">guide</span></h2>
+      </div>
+      <div class="grid-2">
+        {values.map(v => (
+          <div class="card tilt-card fade-in">
+            <div style="font-size:2rem; margin-bottom:1rem;">{v.icon}</div>
+            <h3 style="margin-bottom:0.75rem;">{v.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{v.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container" style="max-width:700px;">
+      <div class="text-center mb-6 fade-in">
+        <div class="badge badge-violet mb-3">Histoire</div>
+        <h2>Notre <span class="gradient-text">parcours</span></h2>
+      </div>
+      <div class="fade-in">
+        {timeline.map((t, i) => (
+          <div style="display:flex; gap:1.5rem; margin-bottom:1.5rem;">
+            <div style="flex-shrink:0; text-align:right; width:60px;">
+              <span style="font-weight:800; color:var(--cyan); font-size:0.9375rem;">{t.year}</span>
+            </div>
+            <div style="flex:1; padding-left:1.5rem; border-left:2px solid var(--border-cyan); padding-bottom:1.5rem;">
+              <p style="color:var(--text-muted);">{t.event}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Rejoignez l'aventure<br/><span class="gradient-text">Nexus AI</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Que vous souhaitiez devenir client, partenaire ou collaborateur, nous serions ravis d'échanger avec vous.</p>
+      <div class="flex-center gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">Nous contacter →</a>
+        <a href="/equipe" class="btn btn-outline">Rencontrer l'équipe</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

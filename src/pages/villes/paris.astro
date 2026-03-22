@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Nexus AI Paris",
+  "description": "Agence IA et automatisation à Paris — Solutions IA pour entreprises parisiennes",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenue des Champs-Élysées",
+    "addressLocality": "Paris",
+    "postalCode": "75008",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33184000000",
+  "url": "https://d2-tech-demo.netlify.app/villes/paris",
+  "areaServed": { "@type": "City", "name": "Paris" }
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://d2-tech-demo.netlify.app" },
+    { "@type": "ListItem", "position": 2, "name": "Villes" },
+    { "@type": "ListItem", "position": 3, "name": "Paris" }
+  ]
+};
+---
+
+<Layout
+  title="Agence IA Paris — Automation & Intelligence Artificielle | Nexus AI"
+  description="Nexus AI, agence IA à Paris. Automation de processus, SEO IA, chatbots, analytics pour les entreprises parisiennes. Bureaux Paris 8ème. RDV en 24h."
+  schema={[schema, breadcrumb]}
+>
+  <Header slot="header" />
+
+  <div class="page-hero dot-grid">
+    <div class="aurora-bg"><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb">
+        <a href="/">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Villes</span>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:var(--cyan);">Paris</span>
+      </nav>
+      <div class="badge badge-cyan mb-3">📍 Paris</div>
+      <h1 style="max-width:700px; margin-bottom:1.5rem;">
+        Agence IA à Paris<br/>
+        <span class="gradient-text">Leader en Île-de-France</span>
+      </h1>
+      <p style="color:var(--text-muted); font-size:1.25rem; max-width:560px; margin-bottom:2.5rem;">
+        Nexus AI accompagne les entreprises parisiennes dans leur transformation IA. Bureaux au coeur de Paris 8ème, interventions dans toute l'Île-de-France.
+      </p>
+      <div class="flex gap-2" style="flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-primary">RDV à Paris →</a>
+        <a href="tel:+33184000000" class="btn btn-outline">01 84 00 00 00</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local info -->
+  <section class="section" style="background:var(--surface-dark);">
+    <div class="container">
+      <div class="grid-2">
+        <div class="fade-in">
+          <div class="badge badge-violet mb-3">Nos bureaux Paris</div>
+          <h2 style="margin-bottom:1.5rem;">Au coeur de <span class="gradient-text">Paris 8ème</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">Nos bureaux parisiens sont situés dans le 8ème arrondissement, au coeur du quartier d'affaires. Accessibles en métro (lignes 1, 9, 13) et RER A.</p>
+          <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.9375rem; color:var(--text-muted);">
+            <span>📍 Avenue des Champs-Élysées, 75008 Paris</span>
+            <span>🚇 Métro : Franklin D. Roosevelt (L1, L9)</span>
+            <span>📞 01 84 00 00 00</span>
+            <span>✉️ paris@nexus-ai.fr</span>
+            <span>🕒 Lun-Ven : 9h-18h</span>
+          </div>
+        </div>
+        <div class="fade-in">
+          <h2 style="margin-bottom:1.5rem;">Paris, <span class="gradient-text">capitale de l'IA</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:1rem;">Paris est le hub IA le plus dynamique d'Europe. Station F, le plus grand campus startup au monde, est à Paris. Les talents IA affluent dans la capitale.</p>
+          <p style="color:var(--text-muted);">Avec 50+ entreprises du CAC40 basées à Paris et une scène startup bouillonnante, notre agence IA parisienne est idéalement positionnée pour accompagner les ambitions des entreprises de toutes tailles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Paris -->
+  <section class="section" style="background:var(--bg-dark);">
+    <div class="container">
+      <div class="text-center mb-6 fade-in">
+        <h2>Nos services IA <span class="gradient-text">à Paris</span></h2>
+      </div>
+      <div class="grid-3">
+        {[
+          { t: 'Automation IA Paris', d: "Automatisez vos processus métier. Nos consultants se déplacent dans vos bureaux parisiens pour auditer et déployer vos workflows IA.", href: '/automation-ia-paris' },
+          { t: 'SEO IA Paris', d: "Dominez Google sur les recherches locales parisiennes. Optimisation pour les requêtes géolocalisées Île-de-France.", href: '/seo-ia-paris' },
+          { t: 'Chatbot IA Paris', d: "Chatbots pour entreprises parisiennes. Support en français, intégration avec vos outils CRM, déploiement rapide.", href: '/chatbot-paris' },
+          { t: 'Analytics Paris', d: "Tableaux de bord sur mesure pour les marchés parisiens. Benchmark concurrentiel Île-de-France inclus.", href: '/analytics-paris' },
+          { t: 'Formation IA Paris', d: "Sessions de formation à Paris chaque mois. Intra-entreprise disponible dans vos locaux parisiens.", href: '/services/formation-ia' },
+          { t: 'Dev Web Paris', d: "Développement de sites et applications web. Équipe tech basée à Paris, disponible pour vos réunions.", href: '/developpement-web-paris' }
+        ].map(s => (
+          <a href={s.href} class="card tilt-card fade-in" style="text-decoration:none; color:inherit;">
+            <h3 style="margin-bottom:0.75rem; color:var(--cyan);">{s.t}</h3>
+            <p style="color:var(--text-muted); font-size:0.9375rem;">{s.d}</p>
+            <div style="margin-top:1rem; font-size:0.875rem; font-weight:600; color:var(--cyan);">En savoir plus →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Paris -->
+  <section class="section" style="background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(124,58,237,0.08)); border-top:1px solid var(--border);">
+    <div class="container text-center fade-in">
+      <h2 style="margin-bottom:1rem;">Rencontrons-nous<br/><span class="gradient-text">à Paris</span></h2>
+      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem;">Café, déjeuner ou rendez-vous en salle — nos équipes parisiennes sont disponibles pour discuter de votre projet IA.</p>
+      <a href="/contact" class="btn btn-primary">Prendre rendez-vous →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
