@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import ConsentTracking from '../components/ConsentTracking.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 
 export interface Props {
   title: string;
@@ -64,6 +66,7 @@ const searchSchema = {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <ConsentTracking />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <title>{title}</title>
@@ -197,5 +200,6 @@ const searchSchema = {
       });
     });
   </script>
+  <ConsentBanner />
 </body>
 </html>
