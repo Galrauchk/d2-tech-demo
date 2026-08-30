@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import LegalLinks from '../components/LegalLinks.astro';
 ---
 
 <Layout
@@ -79,6 +80,7 @@ Toutes les informations indiquées sur le site sont données à titre indicatif 
           <div style="color:var(--text-muted); line-height:1.8; white-space:pre-line;">{section.content}</div>
         </div>
       ))}
+      <LegalLinks includeMentions={false} />
     </div>
   </section>
 
