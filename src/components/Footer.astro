@@ -77,8 +77,11 @@ import LegalLinks from './LegalLinks.astro';
     <!-- Bottom bar -->
     <div style="border-top:1px solid var(--border); padding-top:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
       <p style="color:var(--text-muted); font-size:0.8125rem;">© 2025 Nexus AI — Tous droits réservés</p>
-      <p style="color:var(--text-muted); font-size:0.8125rem; opacity:0.6;">Template <strong style="color:var(--cyan);">D2 TECH PREMIUM</strong> · WebTrafic</p>
+
       <LegalLinks includeMentions={false} />
     </div>
   </div>
+  <p data-webtrafic-credit style="margin: 1rem; text-align: center; font-size: 0.75rem; line-height: 1.6;">
+    Site réalisé par <a href="https://webtrafic.fr/" style="color: inherit; text-decoration: underline; text-underline-offset: 0.2em;">WebTrafic</a>
+  </p>
 </footer>
