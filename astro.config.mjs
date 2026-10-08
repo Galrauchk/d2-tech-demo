@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://d2-tech-demo.netlify.app',
+  site: 'https://demo-tech.webtrafic.fr',
   integrations: [sitemap({
     filter: (page) =>
       !page.includes('/politique-confidentialite') &&
